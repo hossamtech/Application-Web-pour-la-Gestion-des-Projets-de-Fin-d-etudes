@@ -1,0 +1,140 @@
+<div class="card">
+	<div class="card-body pb-0-important">
+		<div class="flex flex-wrap items-center gap-3 mb-5">
+			<div class="size-12 bg-green-100 rounded-full outline-1 outline outline-transparent outline-offset-[3px] [&.active]:outline-custom-500 shrink-0 dark:bg-green-500/20">
+				<img [src]="profileImg(supervisor?.profileImg)" alt="" class="size-12 rounded-full">
+			</div>
+			<div class="grow">
+				<h6 class=" text-15"><a href="javascript:void(0);"
+						class="transition-all duration-200 ease-linear hover:text-custom-500 dark:hover:text-custom-500">{{supervisor?.fullName}}
+				</a> -<small class="ml-1 font-normal text-slate-500 dark:text-zink-200">{{formatDateTime(createdDate)}}</small></h6>
+				<a class="text-slate-500" href="mailto:hossam@uae.uac.ma">
+					{{ supervisor?.email }}
+				</a>
+			</div>
+			<div class="flex items-center gap-2 mt-4 shrink-0 md:mt-4">
+<!--				<button type="button" class="group/item toggle-button active px-2 py-1.5 text-xs bg-white border-dashed text-sky-500 btn border-sky-500 hover:text-sky-500 hover:bg-sky-50 hover:border-sky-600 focus:text-sky-600 focus:bg-sky-50 focus:border-sky-600 active:text-sky-600 active:bg-sky-50 active:border-sky-600 dark:bg-zink-700 dark:ring-sky-400/20 dark:hover:bg-sky-800/20 dark:focus:bg-sky-800/20 dark:active:bg-sky-800/20">-->
+<!--					<span class="group-[.active]/item:hidden block"><lucide-angular name="plus" [class]="'inline-block size-3 mr-1'"></lucide-angular> Follow</span>-->
+
+<!--					<span class="group-[.active]/item:block hidden"><lucide-angular name="user-round-plus" [class]="'inline-block size-3 mr-1'"></lucide-angular> Unfollow</span>-->
+
+<!--				</button>-->
+
+				<div class="shrink-0">
+					<button (click)="overviewListProject(listId)"
+							class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-blue-700 btn bg-blue-50 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" data-bs-toggle="dropdown">
+						<lucide-angular name="list-collapse" class="size-4"></lucide-angular>
+					</button>
+				</div>
+			</div>
+		</div>
+<!--		Publication-->
+
+		<div class="w-full pl-1 pt-3">
+
+		<ngx-slick-carousel class="swiper  pagination-dynamic" style="padding-bottom: 35px" [config]="slideConfig">
+
+			@for(project of listProjects ;track $index){
+
+			<div class="card product-item w-64" ngxSlickItem>
+			<div class="pb-4 pl-5 pt-4 pr-5 border-b border-slate-200">
+				<div class="flex items-center gap-2 ">
+					<div mndropdown class="relative dropdown mb-2">
+						<button mndropdownToggle
+								class="bg-orange-100 border-orange-500 dark:bg-orange-500/20 size-4 mt-1 border border-dashed rounded-full dropdown-toggle shrink-0  category-dropdown" id="notesAction1" data-bs-toggle="dropdown" type="button" aria-expanded="false"></button>
+						<ul mndropdownMenu class="absolute z-50  py-2 mt-1 text-left list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="notesAction1">
+							<li>
+								<a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">Personal</a>
+							</li>
+							<li>
+								<a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">Business</a>
+							</li>
+							<li>
+								<a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">Social</a>
+							</li>
+							<li>
+								<a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">Home</a>
+							</li>
+						</ul>
+					</div>
+					<h5
+							class="text-15 pl-0.5 cursor-pointer transition-all duration-200 ease-linear hover:text-custom-500 dark:hover:text-custom-500" style="max-width: 200px;">{{project.title}}</h5>
+				</div>
+			</div>
+
+			<div class="flex flex-col card-body">
+				<div class="pb-3.5">
+					<p class="text-slate-800 pb-1 font-medium text-sm dark:text-zink-200">Number of students :</p>
+					<span
+							class="px-2 py-0 text-10 inline-block font-medium rounded border bg-custom-100 border-custom-200 text-custom-500 dark:bg-custom-500/20 dark:border-custom-500/20">{{ getNumberStudents(project) }}</span>
+				</div>
+				<div class="pb-3.5">
+					<p class="text-slate-800 pb-1.5 font-medium text-sm dark:text-zink-200">Team :</p>
+					<div *ngIf="project.students.length === 0" class="flex -space-x-2">
+						<ng-container *ngFor="let _ of [].constructor(project.numberStudents); let i = index">
+							<div data-tooltip="default" tooltip="Hossam Chokri" [options]="myOptions"
+									class="flex items-center text-sm justify-center size-7 border-2 border-white rounded-full"
+									[ngClass]="getAvatarClass(i)">
+								?
+							</div>
+						</ng-container>
+					</div>
+				</div>
+
+
+				<div>
+
+				</div>
+				<div class="pb-3">
+					<div class="js-read-smore" data-read-smore-words="40" data-read-smore-inline="true" style="display: inline;">
+						<p class="text-slate-800 pb-1.5 text-sm font-medium dark:text-zink-200">Description :</p>
+						<p class="text-slate-500 text-sm" style="display: inline;" [innerHTML]="showFullDescription ?
+						project.description :
+					project.description.slice(0, 100)"> </p>
+					</div>
+					@if(project.description.length > 300){
+						<span class="read-smore__link-wrap" style="display: inline;">
+                <a class="read-smore__link text-11 pt-1" style="cursor:pointer" aria-expanded="false" tabindex="0"
+						(click)="toggleDescription()">
+                    {{ showFullDescription ? 'Read Less' : 'Read More' }}
+                </a>
+            		</span>
+					}
+				</div>
+
+				<div class="flex items-center justify-between gap-3 pt-1 mt-auto">
+
+					<p class="text-slate-800 text-sm font-medium dark:text-zink-200">Status :</p>
+
+					<div >
+						<span
+								class="px-2.5 py-0.5 inline-block text-10 font-medium rounded-full border bg-sky-100 border-transparent text-sky-500 dark:bg-sky-500/20 dark:border-transparent">
+							{{ getStatusLabel(project.status) }}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+			}
+					</ngx-slick-carousel>
+		</div>
+	</div>
+
+	<div class="border-y border-slate-200 card-body dark:border-zink-500">
+		<ul class="flex items-center gap-4 mb-0">
+<!--			<li>-->
+<!--				<a href="javascript:void(0);" class="text-slate-500 dark:text-zink-200"><lucide-angular name="messages-square" [class]="'inline-block size-4 ltr:mr-1 rtl:ml-1'"></lucide-angular> <span class="align-middle"> 48 Comments</span></a>-->
+<!--			</li>-->
+			<li>
+				<a href="javascript:void(0);" class="text-slate-500 dark:text-zink-200"><lucide-angular name="heart" [class]="'inline-block size-4 ltr:mr-1 rtl:ml-1'"></lucide-angular> <span class="align-middle"> 257 Likes</span></a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="text-slate-500 dark:text-zink-200"><lucide-angular name="send" [class]="'inline-block size-4 ltr:mr-1 rtl:ml-1'"></lucide-angular> <span class="align-middle"> 13 Share</span></a>
+			</li>
+			<li class="ltr:ml-auto rtl:mr-auto">
+				<a href="javascript:void(0);" class="text-slate-500 dark:text-zink-200"><lucide-angular name="bookmark" [class]="'inline-block size-4 ltr:mr-1 rtl:ml-1'"></lucide-angular> <span class="align-middle"> 7</span></a>
+			</li>
+		</ul>
+	</div>
+
+</div>

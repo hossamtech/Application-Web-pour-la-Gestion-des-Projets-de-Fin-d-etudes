@@ -1,0 +1,392 @@
+<div class="grid grid-cols-12 mt-5 gap-x-5">
+	<div class="col-span-12 lg:col-span-5 xl:col-span-3 shrink-0 lg:block">
+		<div class="sticky top-0">
+			<app-menu></app-menu>
+		</div>
+	</div><!--end-->
+
+	<div class="col-span-1 mr-[-103px] lg:col-span-7 xl:col-span-5 2xl:col-span-5" style="margin-left: -54px">
+		<div class="relative overflow-hidden card">
+			<div class="p-8">
+				<div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+					<div class="xl:col-span-5">
+						<h4 class="mb-1 text-2xl">
+							Ajouter une demande de rendez-vous maintenant
+						</h4>
+<!--						<p class="mb-5 text-slate-500 dark:text-zink-200">Effortlessly request an appointment with your-->
+<!--							official supervisor through our intuitive student interface,-->
+<!--							and stay updated as your supervisor reviews and schedules the meeting.-->
+<!--						</p>-->
+						<button [appModalTrigger]="'createRequest'" type="button"
+								class="mt-5 text-white flex items-center justify-center btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+							<lucide-angular name="plus"
+									class="size-3"></lucide-angular>
+							<p class="pl-1">add request</p>
+						</button>
+
+
+					</div><!--end col-->
+					<div class="hidden xl:col-span-3 xl:col-start-10 xl:block">
+						<img src="assets/images/50.jpg" alt=""
+								class="absolute h-[266px]  -top-12 ltr:-right-4 rtl:left-8">
+					</div>
+				</div><!--end grid-->
+			</div>
+		</div><!--end card-->
+
+		<div class="card">
+			<div class="pb-4 pt-4 pl-2.5 flex items-center border-b border-slate-200">
+				<lucide-angular name="minus"
+						class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+				<h6 class="text-15">Upcoming Scheduled</h6>
+
+			</div>
+			<div class="card-body">
+				<div>
+					@for (data of listAppointment; track $index) {
+						<div class="flex">
+						<!-- First column with the additional text -->
+						<div class="flex-shrink-0 pr-4">
+							<p class="text-sm text-slate-500 dark:text-zink-200">
+								{{ getAmPmFromTime(data.time) }}
+							</p>
+						</div>
+						<div class="flex-grow">
+							<div 	[ngClass]="{'ltr:before:border-l': $index !== listAppointment.length - 1}"
+									class="relative ltr:pl-6 rtl:pr-6 before:absolute ltr:before:border-l ltr:before:left-[.22rem] rtl:before:border-r before:border-slate-200 rtl:before:right-[.22rem] before:top-1.5 before:-bottom-1.5 after:absolute after:size-2 after:bg-custom-500 after:rounded-sm ltr:after:left-0 rtl:after:right-0 after:top-1.5 pb-4 dark:before:border-zink-500 w-full">
+								<div class="bg-custom-50 px-4 pb-2.5 pt-4 rounded-lg w-full">
+									<div class="flex flex-col gap-3">
+										<div class="flex justify-between items-start">
+											<p class="text-14 font-medium text-slate-900 flex-grow">
+												{{ data.subject }}
+											</p>
+											<span
+													class="px-2.5 py-0.5 text-11 inline-block font-medium rounded border bg-custom-100 border-custom-200 text-custom-500 dark:bg-custom-500/20 dark:border-custom-500/20">
+											{{ data.date }}
+										</span>
+										</div>
+										<div class="flex justify-between items-center">
+											<div class="flex flex-col items-center gap-2">
+												<div class="flex flex-wrap mb-2"> <!-- Add flex and spacing here -->
+													<span
+															class="mr-2 px-2.5 py-0.5 text-11 inline-block font-medium rounded-full border
+														bg-white border-custom-400 text-custom-500 ">
+													{{ data.supervisorName }}
+												</span>
+												</div>
+
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					}
+				</div>
+			</div>
+		</div><!--end card-->
+
+
+	</div><!--end-->
+	<div class="col-span-1 ml-[105px] lg:col-span-3 xl:col-span-4 2xl:block shrink-0">
+
+			<div class="pb-3  flex items-center border-b border-slate-200">
+				<div class="w-full flex items-center justify-center">
+					<div class="relative inline-flex">
+						<label for="npm-install-copy-text" class="sr-only">Label</label>
+						<button	(click)="change('requests')"
+								[ngClass]="{'active text-white bg-custom-500': isActive.requests,
+								'text-slate-500 bg-slate-100 border-slate-400': !isActive.requests}"
+								type="button"
+								class="ml-1 inline-flex h-[37px] py-3  items-center justify-center rounded-full absolute start-1.5 top-1/2 -translate-y-1/2 text-slate-500 btn bg-slate-100  active:text-white active:bg-custom-500"
+						>
+
+							<span class="align-middle text-sm pl-1">Demande envoyees</span>
+						</button>
+						<input
+								id="npm-install-copy-text"
+								type="text"
+								class=" border pr-32 pl-4 py-3.5 text-sm rounded-full
+										form-input
+										focus:outline-none focus:border-custom-500 bg-white
+										border-custom-300
+										text-slate-500
+										placeholder:text-slate-400
+									 	shrink"
+								disabled
+						/>
+
+						<button (click)="change('appointments')"
+								type="button"
+								[ngClass]="{'active text-white bg-custom-500': isActive.appointments, 'text-slate-500 bg-slate-100 border-slate-400':
+								!isActive.appointments}"
+								class="mr-[3px] inline-flex h-[37px] py-3  items-center justify-center rounded-full absolute end-1.5 top-1/2 -translate-y-1/2 text-slate-500 btn bg-slate-100  active:text-white active:bg-custom-500"
+						>
+
+							<span  class="align-middle text-sm pl-1 ">Rendez-vous</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+		<div *ngIf="isActive.requests && !isActive.appointments" class="card">
+			<div class="py-[18px] pl-2.5 pr-4 flex items-center border-b border-slate-200">
+				<lucide-angular name="minus"
+						class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+				<h6 class="text-15">Appointment Request's</h6>
+
+			</div>
+			<div class="card-body  ">
+				<div class="relative">
+					<div>
+						<div class="w-full">
+							<div class="space-y-3">
+								<!-- Parent container for the whole content -->
+								@for (data of listAppointment; track $index) {
+									<div class="border rounded-md border-slate-200 dark:border-zinc-500 flex flex-col gap-2">
+									<!-- Top Section: Date, Title, and Dropdown -->
+									<div class="flex items-center justify-between p-2 gap-3">
+										<!-- Left Section: Date and Title -->
+										<div class="flex items-start gap-3 grow">
+											<div class="flex mt-[5px] items-center justify-center shrink-0">
+
+												<div class="flex flex-col items-center justify-center size-12 border rounded-sm border-slate-200 shrink-0">
+													<h6>{{ getDatePart(data.date, 'day') }}</h6>
+													<span class="text-sm text-slate-500 dark:text-zink-200">{{ getDatePart(data.date, 'month') }}</span>
+												</div>
+
+											</div>
+											<div class="grow">
+												<h6 class="my-0.5 text-15">
+													<a routerLink="/product-overview" class="transition-all duration-300 ease-linear hover:text-custom-500">
+														{{ data.subject | truncateFileName: 40 }}
+													</a>
+												</h6>
+												<p class="mb-0 mt-1.5 text-slate-500 flex items-center space-x-1 w-full">
+													<span>{{ data.supervisorName }}</span>
+													<lucide-angular name="dot" class="size-3"></lucide-angular>
+													<span
+															class="px-1.5 py-0 text-11 inline-block font-medium rounded border bg-white border-slate-400 text-slate-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200">
+													{{ data.date }}
+                    								</span>
+												</p>
+											</div>
+										</div>
+
+									</div>
+
+									<!-- Bottom Section: Appointment Status and Actions -->
+
+										<div class="px-3 py-2 border-t border-slate-200 w-full">
+											<div class="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
+												<p class="text-slate-500 text-base flex items-center">
+													<lucide-angular name="clock-4" class="size-4 ltr:mr-1 rtl:ml-1"></lucide-angular>
+													<span class="align-middle">
+                        								{{ getAmPmFromTime(data.time) }}
+                    								</span>
+												</p>
+
+												<div *ngIf="data.status === AppointmentStatus.WAITING" class="flex gap-2">
+													<button type="button"
+															(click)="confirmAppointment(data.id)"
+															class="text-custom-500 py-[5px] px-5 btn bg-custom-100 hover:text-white hover:bg-custom-600
+															focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100
+															active:text-white active:bg-custom-600 active:ring active:ring-custom-100 ">
+														Accept
+													</button>
+													<button type="button"
+														(click)="cancelAppointment(data.id)"
+														class="text-red-500 py-[5px] px-5 btn bg-red-100 hover:text-white hover:bg-red-600
+															focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100
+															active:text-white active:bg-red-600 active:ring active:ring-red-100 ">
+													Reject
+												</button>
+
+												</div>
+
+												<div *ngIf="data.status != AppointmentStatus.WAITING">
+													<span class="py-[5px] btn inline-flex items-center status" [ngClass]="{
+														'bg-green-100 text-green-500': data.status ==
+														AppointmentStatus.ACCEPTED,
+														'bg-red-100 text-red-500 dark:bg-red-500/20': data.status == AppointmentStatus.CANCELED
+													}">
+														@if (data.status == AppointmentStatus.ACCEPTED) {
+															<lucide-angular name="circle-check-big" class="size-3 mr-1.5"></lucide-angular>
+														}
+														@if (data.status == AppointmentStatus.CANCELED) {
+															<lucide-angular name="x" class="size-3 mr-1.5"></lucide-angular>
+														}
+
+														{{ getStatusLabel(data.status) }}
+													</span>
+												</div>
+											</div>
+										</div>
+
+								</div>
+								}
+							</div>
+							<div class="hidden flex flex-col justify-center mt-5 items-center h-full">
+								<img alt="image" class="m-auto mb-2 dark:hidden max-h-[145px]"
+										src="assets/images/notchat.svg">
+								<p class="text-slate-400 font-medium text-center mt-2">
+									You don't have any appointment requests
+								</p>
+							</div>
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div><!--end card-->
+		<div *ngIf="!isActive.requests && isActive.appointments" class="card">
+			<div class="py-[18px] pl-2.5 pr-4 flex items-center border-b border-slate-200">
+				<lucide-angular name="minus"
+						class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+				<h6 class="text-15">Appointment Request's</h6>
+
+			</div>
+			<!--			<div class="card-body pt-0-important flex justify-center items-center h-[350px]">-->
+			<div class="card-body pt-0-important flex justify-center items-center ">
+				<div class="relative">
+					<div>
+						<div class="w-full">
+							<div class="">
+								@for (data of listRequests; track $index) {
+									<div
+										class="flex items-center border-b border-dashed border-custom-500 dark:border-zinc-500 py-4">
+									<div class="flex items-start gap-4 px-2 first:pl-0 last:pr-0">
+										<div
+												class="flex items-center justify-center size-10 rounded-md bg-slate-100 shrink-0">
+
+											<lucide-angular *ngIf="data.complete" name="mail-check"
+													[class]="'size-5 text-sky-500 fill-sky-200 dark:fill-sky-500/30'"></lucide-angular>
+											<lucide-angular *ngIf="!data.complete" name="mail-x"
+													[class]="'size-5 text-sky-500 fill-sky-200 dark:fill-sky-500/30'"></lucide-angular>
+
+										</div>
+										<div class="grow">
+											<h6 class="mb-0.5 text-15">
+												<a routerLink="/product-overview"
+														class="transition-all duration-300 ease-linear hover:text-custom-500">
+													{{ data.subject | truncateFileName:40 }}
+												</a>
+											</h6>
+											<p
+													class="mb-0 mt-1 text-slate-500 flex items-center space-x-1 w-full">
+												<span>{{data.supervisorName}}</span>
+												<lucide-angular name="dot"
+														class="size-3"></lucide-angular>
+												<span
+														class="px-1.5 py-0 flex text-11 items-center font-medium rounded border bg-white border-slate-400 text-slate-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200">
+													<p>{{data.date}}</p>
+													<lucide-angular name="dot"
+															class="size-3"></lucide-angular>
+													<p>{{ getAmPmFromTime(data.time) }}</p>
+											  	</span>
+											</p>
+
+											<div class=" mt-2">
+												<div class="js-read-smore" data-read-smore-words="40" data-read-smore-inline="true" style="display: inline;">
+													<!--												<p class="text-slate-800 pb-2 font-medium dark:text-zink-200">Description :</p>-->
+													<p class="text-slate-600 text-sm"
+															[innerHTML]="
+														showFullDescription ?
+														data.description :
+														data.description.slice(0, 73) + '...'">
+													</p>
+												</div>
+												@if(data.description.length > 73){
+													<span class="read-smore__link-wrap" style="display: inline;">
+														<a class="read-smore__link text-11 block pt-1" style="cursor:pointer" aria-expanded="false"
+																tabindex="0"
+																(click)="toggleDescription()">
+															{{ showFullDescription ? 'Read Less' : 'Read More' }}
+														</a>
+													</span>
+												}
+											</div>
+
+
+										</div>
+									</div>
+
+
+
+								</div>
+								}
+
+							</div>
+							<div class="hidden flex flex-col justify-center mt-5 items-center h-full">
+								<img alt="image" class="m-auto mb-2 dark:hidden max-h-[145px]"
+										src="assets/images/notchat.svg">
+								<p class="text-slate-400 font-medium text-center mt-2">
+									You don't have any appointment requests
+								</p>
+							</div>
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div><!--end card-->
+
+	</div><!--end-->
+</div><!--end-->
+
+<ng-modals id="createRequest" [placement]="'modal-center'"
+		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[32rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Add review</h5>
+			<button dismissModal [ModalDismiss]="'confirmProjectModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-5 overflow-y-auto">
+
+			<form [formGroup]="appointmentsForm" action="javascript:void(0);">
+				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-12">
+					<div class="xl:col-span-12">
+						<label class="inline-block mb-2 text-base font-medium">Subject</label>
+						<div class="relative">
+							<lucide-angular name="calendar-days" [class]="'absolute left-3 top-3 text-slate-500 size-4'"
+							></lucide-angular>
+							<input
+									class="pl-10 form-input border-slate-200 focus:outline-none focus:border-custom-500 placeholder:text-slate-400 "
+									id="subjectInput"
+									formControlName="subject"
+									placeholder="Subject">
+						</div>
+
+					</div>
+
+					<div class="col-span-12">
+						<label for="textArea" class="inline-block mb-2 text-base font-medium">Description</label>
+						<textarea
+								class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+								id="textArea"
+								formControlName="description"
+								rows="4"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="p-5 border-t dark:border-zink-500">
+			<div class="flex justify-end gap-2">
+				<button dismissModal [ModalDismiss]="'createRequest'" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+				<button  type="button"
+						dismissModal [ModalDismiss]="'createRequest'"
+						(click)="saveRequest()"
+						class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Send Question</button>
+			</div>
+		</div>
+	</div>
+</ng-modals><!--end ask modal-->

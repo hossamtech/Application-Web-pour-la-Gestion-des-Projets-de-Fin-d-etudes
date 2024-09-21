@@ -1,0 +1,18 @@
+
+.product-item {
+  margin-right: 10px !important; /* Adjust as needed */
+  margin-left: 5px !important;
+  margin-top: 2px !important;
+  border-top: 1px dashed rgb(14 165 233 / var(--tw-text-opacity));
+  border-right: 1px dashed rgb(14 165 233 / var(--tw-text-opacity));
+  border-left: 1px dashed rgb(14 165 233 / var(--tw-text-opacity));
+  border-bottom: 1px dashed rgb(14 165 233 / var(--tw-text-opacity));
+  --tw-shadow-color: #fff !important;
+
+
+}
+
+.product-item:hover {
+  border-top: 3px solid rgb(14 165 233 / var(--tw-text-opacity));
+}
+

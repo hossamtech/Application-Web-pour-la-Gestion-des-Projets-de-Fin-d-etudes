@@ -1,0 +1,8 @@
+<ng-template [ngIf]="isOpen">
+  <i *ngIf="icon != ''" class="{{icon}} text-xl ltr:mr-2 rtl:ml-2"></i>
+  <ng-content></ng-content>
+  <ng-template [ngIf]="dismissible">
+    <button [ngClass]="closeButtonStyle" (click)="close($event)"><lucide-angular name="x" [class]="'h-5'"></lucide-angular></button>
+
+  </ng-template>
+</ng-template>

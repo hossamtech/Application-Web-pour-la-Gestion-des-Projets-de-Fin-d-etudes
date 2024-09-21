@@ -1,0 +1,1146 @@
+<app-page-title [title]="'Overview Project'"
+		[pagetitle]="'Project'"></app-page-title>
+<div class="mr-2 col-span-12 lg:col-span-7 xl:col-span-9 2xl:col-span-9">
+	<div class="card">
+		<div class="card-body">
+			<div class="grid grid-cols-1 gap-5 xl:grid-cols-12 bg-blue-50 px-4 py-4 rounded-[16px]">
+				<div class="xl:col-span-9">
+					<div class="flex items-center gap-2 pb-4 pl-2">
+						<h5 class="text-2xl pl-0.5 pt-custom-3 text-slate-700">Personal Finance Tracker with AI Insights</h5>
+					</div>
+
+					<div class="flex justify-between pl-2">
+						<div class="flex justify-start space-x-14">
+							<div class="flex flex-col items-start gap-1">
+								<p class="text-slate-500 font-medium text-sm">Assigned To</p>
+
+								<div  class="flex -space-x-2">
+									<!--									<ng-container *ngFor="let p of participants; let i = index">-->
+									<!--										<img data-tooltip="default" [tooltip]="p.fullName" [options]="myOptions"-->
+									<!--												class="cursor-pointer size-8 border-2 border-white rounded-full dark:border-zink-700" [src]="profileImg(p.profileImage)" alt="">-->
+
+									<!--									</ng-container>-->
+									<ng-container *ngIf="nbrStudents > 0">
+										<div *ngFor="let _ of [].constructor(nbrStudents); let i = index">
+											<div data-tooltip="default" tooltip="Hossam Chokri" [options]="myOptions"
+													class="cursor-pointer flex text-xs items-center justify-center size-8 border-2 border-white rounded-full"
+													[ngClass]="getAvatarClass(i)">
+												?
+											</div>
+										</div>
+									</ng-container>
+								</div>
+
+							</div>
+							<div class="flex flex-col items-start gap-2">
+								<p class="text-slate-500 font-medium text-sm">Number of students</p>
+								<div
+										class="flex items-center justify-center px-3 py-1 text-xs font-medium border border-sky-200 rounded-full bg-sky-100  text-sky-500 dark:bg-sky-500/20 dark:border-transparent"
+								>
+									<lucide-angular name="user-round-check" class="size-3"></lucide-angular>
+									<p class="pl-1">Mohammed Chokri</p>
+								</div>
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="xl:col-start-13 xl:col-span-7">
+					<div class="flex gap-3 mr-2 justify-end">
+						<div class="shrink-0">
+							<button  [appModalTrigger]="'extraLargeModal'"   type="button"
+									class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+
+								<img src="assets/images/google-drive-solid.png"
+										alt="Description of Image"
+										class="inline-block w-[15px] h-[15px] fill-slate-100">
+								<span class="pl-2 font-medium text-base align-middle">Drive Link
+										</span>
+							</button>
+						</div>
+<!--						<div class="shrink-0">-->
+<!--							<button-->
+<!--									class="flex items-center justify-center size-[39px] dropdown-toggle p-0 text-blue-700 btn bg-blue-50 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" data-bs-toggle="dropdown">-->
+<!--								<lucide-angular name="bookmark" class="size-4"></lucide-angular>-->
+<!--							</button>-->
+<!--						</div>-->
+<!--						<div class="shrink-0">-->
+<!--							<button-->
+<!--									class="flex items-center justify-center size-[39px] dropdown-toggle p-0 text-blue-700 btn bg-blue-50 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" data-bs-toggle="dropdown">-->
+<!--								<lucide-angular name="share-2" class="size-4"></lucide-angular>-->
+<!--							</button>-->
+<!--						</div>-->
+					</div>
+					<div class="flex flex-col items-end mr-2" style="padding-top: 27px">
+						<!--							<p class="text-slate-500 font-medium text-sm">Owner of the request</p>-->
+
+						<p class="mb-0 mt-1.5 text-slate-500 self-start ">
+							<span class="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-white border-slate-400 text-slate-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200  align-middle">
+									Vendredi
+								</span>
+							<span>
+                            		<lucide-angular name="dot" [class]="'inline-block size-4 '"></lucide-angular>
+                            		<span class="align-middle">12:00 PM</span>
+                        		</span>
+						</p>
+
+					</div>
+
+
+				</div><!--end col-->
+
+			</div>
+		</div>
+	</div><!--end card-->
+	<div class="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
+
+	<div class="xl:col-span-9">
+		<div class="card">
+			<div class="pb-4 pt-4 pl-2.5 pr-5 flex items-center border-b border-slate-200">
+				<lucide-angular name="minus"
+						class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+				<h6 class="text-15">Review of the project</h6>
+				<button *ngIf="isActive.note && !isActive.score" type="button" [appModalTrigger]="'confirmProjectModal'"
+						class="ml-auto text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20">
+					Add review
+				</button>
+				<div *ngIf="!isActive.note && isActive.score" class="ml-auto w-[200px]">
+					<div class=" relative grow ">
+						<div
+								class="z-10 w-full border rounded-lg divide-y max-h-32 overflow-y-auto bg-white  "
+								style="border-radius: 0.375rem !important;">
+							<div class="flex w-full p-2.5  dark:border-zink-500 justify-between">
+								<div class="flex items-center flex-grow gap-3">  <!-- Flex-grow
+								makes this column take more space -->
+									<img
+											class="h-7 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+											src="assets/images/users/user-profile.png" alt="User Profile">
+									<div class="pl-1">
+										<h6 class="mb-0.5 text-sm">
+											<a routerLink="/product-overview"
+													class="transition-all duration-300 ease-linear text-slate-700">
+												Hossam Chokri
+											</a>
+										</h6>
+										<!--											<p class="text-slate-500 text-xs dark:text-zink-200">-->
+										<!--												<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>-->
+										<!--											</p>-->
+									</div>
+								</div>
+								<div class="flex items-center gap-2">
+									<a href="javascript:void(0);"
+											class="transition text-slate-400 hover:text-slate-600 ml-auto">
+										<lucide-angular name="chevron-down"
+												[class]="'size-4 ltr:ml-1 rtl:mr-1'"></lucide-angular>
+									</a>
+								</div>
+							</div>
+
+						</div>
+						<div
+								class="hidden absolute mt-1 z-10 w-full border rounded-lg shadow divide-y max-h-32 overflow-y-auto bg-white"
+								style="border-radius: 0.375rem !important;">
+							<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+								<img
+										class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+										src="assets/images/users/user-profile.png" alt="User Profile">
+								<div class="pl-1">
+									<h6 class="mb-0.5 text-sm">
+										<a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">
+											Hossam Chokri
+										</a>
+									</h6>
+									<p class="text-slate-500 text-xs dark:text-zink-200">
+										<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+									</p>
+								</div>
+							</div>
+							<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+								<img
+										class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+										src="assets/images/users/user-profile.png" alt="User Profile">
+								<div class="pl-1">
+									<h6 class="mb-0.5 text-sm">
+										<a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">
+											Hossam Chokri
+										</a>
+									</h6>
+									<p class="text-slate-500 text-xs dark:text-zink-200">
+										<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+									</p>
+								</div>
+							</div>
+							<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+								<img
+										class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+										src="assets/images/users/user-profile.png" alt="User Profile">
+								<div class="pl-1">
+									<h6 class="mb-0.5 text-sm">
+										<a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">
+											Hossam Chokri
+										</a>
+									</h6>
+									<p class="text-slate-500 text-xs dark:text-zink-200">
+										<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+									</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="card-body pl-6-important pb-6-important pr-6-important">
+				<div class="w-full flex items-center justify-center">
+					<div class="relative inline-flex">
+						<label for="npm-install-copy-text" class="sr-only">Label</label>
+						<button	(click)="change('note')"
+								[ngClass]="{'active text-white bg-custom-500': isActive.note,
+								'text-slate-500 bg-slate-100 border-slate-400': !isActive.note}"
+								type="button"
+								class="ml-1 inline-flex h-[37px] py-3  items-center justify-center rounded-full absolute start-1.5 top-1/2 -translate-y-1/2 text-slate-500 btn bg-slate-100  active:text-white active:bg-custom-500"
+						>
+
+							<span class="align-middle text-sm pl-1">Note</span>
+						</button>
+						<input
+								id="npm-install-copy-text"
+								type="text"
+								class="w-[175px] border pr-32 pl-4 py-3.5 text-sm rounded-full
+										form-input
+										focus:outline-none focus:border-custom-500 bg-custom-50
+										border-custom-300
+										text-slate-500
+										placeholder:text-slate-400
+									 	shrink"
+								disabled
+						/>
+
+						<button (click)="change('score')"
+								type="button"
+								[ngClass]="{'active text-white bg-custom-500': isActive.score, 'text-slate-500 bg-slate-100 border-slate-400':
+								!isActive.score}"
+								class="mr-1 inline-flex h-[37px] py-3  items-center justify-center rounded-full absolute end-1.5 top-1/2 -translate-y-1/2 text-slate-500 btn bg-slate-100  active:text-white active:bg-custom-500"
+						>
+
+							<span  class="align-middle text-sm pl-1 ">Score</span>
+						</button>
+					</div>
+				</div>
+				<ngx-simplebar *ngIf="isActive.note && !isActive.score">
+					<ngx-simplebar class="h-[calc(100vh_-_430px)] mt-5 mb-4">
+					<div class="grid grid-cols-1 gap-1  lg:grid-cols-2 xl:grid-cols-12">
+
+							@for(data of reviewsList;track $index){
+								<div class="xl:col-span-6">
+									<div
+										class="mt-3 px-3 mr-4 py-3 rounded-md border border-slate-200 dark:border-zink-500">
+									<div mndropdown [placement]="'bottom-end'" class="relative ltr:float-right rtl:float-left dropdown">
+										<button mndropdownToggle class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="reviews1" data-bs-toggle="dropdown">
+											<lucide-angular name="ellipsis-vertical" [class]="'size-3'"></lucide-angular></button>
+										<ul mndropdownMenu
+												class="absolute z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[7rem] dark:bg-zink-600" aria-labelledby="reviews1">
+											<li>
+												<a [appModalTrigger]="'addReviewsModal'"
+														class="block px-4 py-1.5 text-sm transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+													<lucide-angular name="file-pen-line" [class]="'inline-block size-3 ltr:mr-1 rtl:ml-1'"></lucide-angular> <span class="align-middle">Edit</span></a>
+											</li>
+											<li>
+												<a [appModalTrigger]="'deleteModal'"
+														class="block px-4 py-1.5 text-sm transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+													<lucide-angular name="trash-2" [class]="'inline-block size-3 ltr:mr-1 rtl:ml-1'"></lucide-angular> <span class="align-middle">Delete</span></a>
+											</li>
+										</ul>
+									</div>
+									<div class="flex items-center gap-3">
+										<div class="size-10 rounded-full shrink-0 bg-sky-100 dark:bg-sky-500/20">
+											<img src="{{data.img}}" alt="" class="h-10 rounded-full">
+										</div>
+										<div class="grow">
+											<div class="flex">
+												<h6 class="text-15 text-slate-700"><a href="javascript:void(0);">To</a></h6>
+												<lucide-angular name="dot"
+														[class]="'inline-block size-3 mx-1'"></lucide-angular>
+												<h6 class="text-15"><a href="javascript:void(0);">{{data.customerName}}</a></h6>
+											</div>
+											<p class="text-sm text-slate-500 dark:text-zink-200">on {{data.date}}</p>
+										</div>
+									</div>
+									<div class="flex items-center mt-4 mb-2">
+										<svg class="w-4 h-4 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+											<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+										</svg>
+										<svg class="w-4 h-4 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+											<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+										</svg>
+										<svg class="w-4 h-4 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+											<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+										</svg>
+										<svg class="w-4 h-4 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+											<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+										</svg>
+										<svg class="w-4 h-4 me-2 text-gray-300 stroke-gray-400" aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+											<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+										</svg>
+									</div>
+									<p class="text-slate-500 text-base dark:text-zink-200">{{data.review}}</p>
+
+								</div>
+								</div>
+							}
+
+					</div>
+					</ngx-simplebar>
+				</ngx-simplebar>
+				<div *ngIf="!isActive.note && isActive.score" class="w-full grid mt-5 gap-5 grid-cols-9 ">
+					<div class="xl:col-span-3 ">
+						<div class="mt-3 pl-10 pr-10 py-3 flex flex-col items-center justify-center"> <!-- Center the content
+						inside
+						 the div -->
+							<span
+									class="px-2.5 py-0.5 mb-2 w-full text-base inline-block font-medium rounded border bg-white border-custom-400 text-custom-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200 align-middle text-center"> <!-- Center the text inside the span -->
+								La note de présentation
+							</span>
+							<label for="score2" class="sr-only">Label</label>
+							<input
+									id="score2"
+									type="number"
+									class="w-full border pl-4 py-3.5 text-7xl rounded-md form-input focus:outline-none focus:border-custom-500 bg-custom-50 border-custom-300 text-slate-500 placeholder:text-slate-400 shrink text-center"
+									placeholder="00"
+							/>
+						</div>
+					</div>
+					<div class="xl:col-span-3 ">
+						<div class="mt-3 px-10 py-3 flex flex-col items-center justify-center"> <!-- Center the content inside
+						 the div -->
+							<span
+									class="px-2.5 py-0.5 mb-2 w-full text-base inline-block font-medium rounded border bg-white border-green-400 text-green-500 align-middle text-center"> <!-- Center the text inside the span -->
+								La note de rapport
+							</span>
+							<label for="score3" class="sr-only">Label</label>
+							<input
+									id="score3"
+									type="number"
+									class="w-full border pl-4 py-3.5 text-7xl rounded-md form-input focus:outline-none focus:border-green-500 bg-green-50 border-green-300 text-slate-500 placeholder:text-slate-400 shrink text-center"
+									placeholder="00"
+							/>
+						</div>
+					</div>
+					<div class="xl:col-span-3 ">
+						<div class="mt-3 pl-10 pr-10 py-3 flex flex-col items-center justify-center"> <!-- Center the content
+						inside the div -->
+							<span
+									class="px-2.5 py-0.5 mb-2 w-full text-base inline-block font-medium rounded border bg-white border-orange-400 text-orange-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200 align-middle text-center"> <!-- Center the text inside the span -->
+								La note d'évaluation
+							</span>
+							<label for="score1" class="sr-only">Label</label>
+							<input
+									id="score1"
+									type="number"
+									class="w-full border pl-4 py-3.5 text-7xl rounded-md form-input focus:outline-none focus:border-orange-500 bg-orange-50 border-orange-300 text-slate-500 placeholder:text-slate-400 shrink text-center"
+									placeholder="00"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div><!--end card-->
+
+
+
+	</div><!--end col-->
+	<div class="xl:col-span-3">
+<!--		<div class="card w-full"> &lt;!&ndash; Added 'w-full' to make the card take full width &ndash;&gt;-->
+<!--			<div class="pb-4 pr-5 pt-4 pl-5 flex items-center border-b border-slate-200 w-full"> &lt;!&ndash; Added 'w-full' &ndash;&gt;-->
+<!--				<div class="border rounded-md border-slate-200 w-full"> &lt;!&ndash; Added 'w-full' &ndash;&gt;-->
+<!--					<div class="flex flex-wrap items-center gap-3 p-2 w-full"> &lt;!&ndash; Added 'w-full' &ndash;&gt;-->
+<!--						<div mndropdownToggle type="button"-->
+<!--								[appModalTrigger]="'confirmProjectModal'"-->
+<!--								class="cursor-pointer flex flex-col items-center justify-center size-12 border rounded-sm border-slate-200 shrink-0  hover:bg-slate-100">-->
+<!--							<h6>17</h6>-->
+<!--							<span class="text-sm text-slate-500 dark:text-zink-200">Aug</span>-->
+<!--						</div>-->
+<!--						<div class="grow">-->
+<!--							<h6 class="mb-1"><a href="javascript:void(0);">La date de soutenance</a></h6>-->
+<!--							<p class="mb-0 mt-1.5 text-slate-500 self-start space-x-2">-->
+<!--								<span class="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-white border-slate-400 text-slate-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200  align-middle">-->
+<!--									Mardi-->
+<!--								</span>-->
+<!--								<span>-->
+<!--                            		<lucide-angular name="calendar-clock" [class]="'inline-block size-4 ltr:mr-1 rtl:ml-1'"></lucide-angular>-->
+<!--                            		<span class="align-middle">12:00 PM</span>-->
+<!--                        		</span>-->
+<!--							</p>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+		<div class="card">
+			<div class="pb-4 pr-5 pt-4 pl-2 flex items-center border-b border-slate-200">
+				<lucide-angular name="minus"
+						class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+
+				<h6 class="text-15">Project Jury</h6>
+			</div>
+
+			<div class="card-body pt-0-important">
+
+				<div class="relative">
+					<div *ngFor="let student of listStudent">
+						<table class="w-full">
+							<tbody>
+							<tr class="align-middle">
+								<td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500">
+									<div class="flex items-center gap-3">
+										<img
+												class="h-8 rounded-md ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+												[src]="profileImg(student.profileImg)" alt="">
+
+										<div class="grow pl-1">
+											<h6 class="mb-0.5 text-base pb-1">
+												<a routerLink="/product-overview"
+														class="transition-all duration-300 ease-linear hover:text-custom-500">{{student.fullName}}
+												</a>
+											</h6>
+											<div class="flex items-center space-x-2"> <!-- Adjust the space-x-2 to your desired gap -->
+												<span
+														class="px-2.5 py-0 text-11 inline-block font-medium rounded-full border bg-white border-custom-400 text-custom-500 dark:bg-zink-700 dark:border-custom-700">
+													Rapporteur
+												</span>
+												<span
+														class="px-2.5 py-0 text-11 inline-block font-medium rounded-full border bg-green-100 border-green-200 text-green-500 dark:bg-green-500/20 dark:border-green-500/20">
+													Accepted
+												</span>
+											</div>
+
+
+
+										</div>
+									</div>
+								</td>
+
+							</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+		<div class="card">
+			<div class="pb-4 pt-4 pl-2 flex items-center border-b border-slate-200">
+				<lucide-angular name="minus"
+						class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+				<h6 class="text-15">Project Team</h6>
+			</div>
+			<div class="card-body pt-0-important">
+
+				<div class="relative">
+					<div *ngFor="let student of listStudent">
+						<table class="w-full">
+							<tbody>
+							<tr class="align-middle">
+								<td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500">
+									<div class="flex items-center gap-3">
+										<img
+												class="h-8 rounded-md ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+												[src]="profileImg(student.profileImg)" alt="">
+
+										<div class="grow pl-1">
+											<h6 class="mb-0.5 text-base"><a routerLink="/product-overview"
+													class="transition-all duration-300 ease-linear hover:text-custom-500">{{student.fullName}}
+											</a></h6>
+											<p class="text-slate-500 text-xs dark:text-zink-200">
+												<a [href]="'mailto:' + student.email">{{ student.email }}</a>
+
+											</p>
+										</div>
+									</div>
+								</td>
+								<td
+										class="flex h-81 justify-end items-center px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500 ltr:text-right rtl:text-left">
+									<div mndropdown [placement]="'bottom-end'" class="relative">
+										<button mndropdownToggle id="orderAction1" data-bs-toggle="dropdown"
+												class="flex items-center justify-center size-[27px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+											<lucide-angular name="grip-horizontal" class="size-3"></lucide-angular></button>
+										<ul mndropdownMenu
+												class="absolute z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[7rem] dark:bg-zink-600" aria-labelledby="orderAction1">
+
+											<li >
+												<a [appModalTrigger]="'addOrderModal'"
+														class="block px-4 py-1.5 text-xs transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+													<lucide-angular name="file-pen-line" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></lucide-angular>
+													<span class="align-middle">Overview</span></a>
+											</li>
+											<li >
+												<a [appModalTrigger]="'deleteModal'"
+														class="block px-4 py-1.5 text-xs transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+													<lucide-angular name="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></lucide-angular>
+													<span class="align-middle">Delete</span></a>
+											</li>
+										</ul>
+
+									</div>
+								</td>
+							</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+</div><!--end grid-->
+</div>
+<ng-modals id="addReviewsModal" [placement]="'modal-center'" className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen lg:xl:w-[55rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Add Review</h5>
+			<button dismissModal [ModalDismiss]="'addReviewsModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+			<form action="javascript:void(0);">
+				<div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+					<div class="xl:col-span-4">
+						<label for="createDateInput" class="inline-block mb-2 text-base font-medium">Create Date</label>
+						<input type="date" id="createDateInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Select date" data-provider="flatpickr" data-date-format="d M, Y">
+					</div>
+					<div class="xl:col-span-4">
+						<label for="notesTitleInput" class="inline-block mb-2 text-base font-medium">Give your review a title</label>
+						<input type="text" id="notesTitleInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Title" required>
+					</div>
+					<div class="xl:col-span-4">
+						<div>
+							<label for="categorySelect" class="inline-block mb-2 text-base font-medium">Rating</label>
+							<select class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" data-choices data-choices-search-false name="categorySelect" id="statusSelect">
+								<option value="">Select Rating</option>
+								<option value="5 Star">5 Star</option>
+								<option value="4 Star">4 Star</option>
+								<option value="3 Star">3 Star</option>
+								<option value="2 Star">2 Star</option>
+								<option value="1 Star">1 Star</option>
+							</select>
+						</div>
+					</div>
+					<div class="xl:col-span-12">
+						<div>
+							<label for="textArea" class="inline-block mb-2 text-base font-medium">Your review</label>
+							<textarea class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" id="textArea" placeholder="Enter Description" rows="6"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex justify-end gap-2 mt-4">
+					<button dismissModal [ModalDismiss]="'addReviewsModal'" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+					<button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Review</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ng-modals><!--end modal-->
+<ng-modals id="shareModal" [placement]="'modal-center'" className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Share</h5>
+			<button dismissModal [ModalDismiss]="'shareModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+			<div class="mb-4">
+				<label for="shareUrlInput" class="inline-block mb-2 text-base font-medium">Copy link</label>
+				<input type="url" id="shareUrlInput"
+						class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" value="https://themesdesign.in/tailwick" disabled readonly>
+			</div>
+			<h6 class="mb-3 text-15">Share More</h6>
+			<ul class="flex gap-2 item-center">
+				<li><a href="javascript:void(0);" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-9 text-slate-500 bg-slate-100 hover:bg-custom-100 hover:text-custom-500 dark:text-zink-200 dark:bg-zink-500 dark:hover:bg-zink-500 dark:hover:text-custom-500"><lucide-angular name="facebook" [class]="'size-4'"></lucide-angular></a></li>
+				<li><a href="javascript:void(0);" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-9 text-slate-500 bg-slate-100 hover:bg-custom-100 hover:text-custom-500 dark:text-zink-200 dark:bg-zink-500 dark:hover:bg-zink-500 dark:hover:text-custom-500"><lucide-angular name="instagram" [class]="'size-4'"></lucide-angular></a></li>
+				<li><a href="javascript:void(0);" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-9 text-slate-500 bg-slate-100 hover:bg-custom-100 hover:text-custom-500 dark:text-zink-200 dark:bg-zink-500 dark:hover:bg-zink-500 dark:hover:text-custom-500"><lucide-angular name="mail" [class]="'size-4'"></lucide-angular></a></li>
+				<li><a href="javascript:void(0);" class="flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-9 text-slate-500 bg-slate-100 hover:bg-custom-100 hover:text-custom-500 dark:text-zink-200 dark:bg-zink-500 dark:hover:bg-zink-500 dark:hover:text-custom-500"><lucide-angular name="dribbble" [class]="'size-4'"></lucide-angular></a></li>
+			</ul>
+		</div>
+	</div>
+</ng-modals><!--end share modal-->
+<ng-modals id="starredLinkModal" [placement]="'modal-center'"
+		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[32rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Ask a Question</h5>
+			<button dismissModal [ModalDismiss]="'starredLinkModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+			<div class="flex pb-4 justify-center mx-auto items-center overflow-y-auto gap-2">
+				<div
+						class="px-4 py-3 mb-3 text-sm text-sky-500 border border-sky-200 rounded-md bg-sky-50 ">
+					<lucide-angular name="circle-check-big" [class]="'inline-block size-4 text-sky-500 fill-sky-100'"></lucide-angular>
+					<span class="pl-2"></span>Enter the text that will appear on the button. This name helps users understand what the link is for (e.g., "Access Project Files").
+				</div>
+			</div>
+			<form action="javascript:void(0);">
+				<div class="mb-3">
+					<label for="nameInput" class="inline-block mb-2 text-base font-medium">Button label</label>
+					<input type="url" id="nameInput"
+							class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter the button name" required>
+				</div>
+				<div class="mb-3">
+					<label for="emailInput" class="inline-block mb-2 text-base font-medium">Drive Link</label>
+					<input type="email" id="emailInput"
+							class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="https://drive.google.com/drive/folders/1TFc0kMJzpCg4qSSCVYNm3quGXrV9vj2y" disabled required>
+				</div>
+				<div class="flex justify-end gap-2 mt-6">
+					<button dismissModal [ModalDismiss]="'starredLinkModal'" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+					<button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Send Question</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ng-modals><!--end ask modal-->
+<ng-modals id="driveModal" [placement]="'modal-center'"
+		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[32rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Ask a Question</h5>
+			<button dismissModal [ModalDismiss]="'driveModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+
+			<form action="javascript:void(0);">
+				<div class="mb-3">
+					<label for="nameInput" class="inline-block mb-2 text-base font-medium">Drive Link</label>
+					<input type="url" id="driveLink"
+							class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+							placeholder="Enter drive url" required>
+				</div>
+
+				<div class="flex justify-end gap-2 mt-6">
+					<button dismissModal [ModalDismiss]="'driveModal'"
+							class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+					<button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Send Question</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ng-modals><!--end ask modal-->
+<ng-modals id="confirmProjectModal" [placement]="'modal-center'"
+		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[32rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Add review</h5>
+			<button dismissModal [ModalDismiss]="'confirmProjectModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-5 overflow-y-auto">
+
+			<form [formGroup]="confirmForm" action="javascript:void(0);">
+				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-12">
+					<div class="xl:col-span-8">
+						<label class="inline-block mb-2 text-base font-medium">Rating</label>
+						<div class="flex items-center relative grow">
+							<svg class="w-5 h-5 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+								<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+							</svg>
+							<svg class="w-5 h-5 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+								<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+							</svg>
+							<svg class="w-5 h-5 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+								<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+							</svg>
+							<svg class="w-5 h-5 me-2 text-yellow-300 stroke-yellow-400" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+								<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+							</svg>
+							<svg class="w-5 h-5 me-2 text-gray-300 stroke-gray-400" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor" stroke="currentColor" viewBox="0 0 22 20">
+								<path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+							</svg>
+
+						</div>
+						<div
+								class="absolute z-10 w-full border rounded-lg shadow divide-y max-h-32 overflow-y-auto bg-white mt-1 hidden"
+								style="border-radius: 0.375rem !important;">
+							<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+								<img
+										class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+										src="assets/images/users/user-profile.png" alt="User Profile">
+								<div class="pl-1">
+									<h6 class="mb-0.5 text-sm">
+										<a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">
+											Hossam Chokri
+										</a>
+									</h6>
+									<p class="text-slate-500 text-xs dark:text-zink-200">
+										<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+									</p>
+								</div>
+							</div>
+							<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+								<img
+										class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+										src="assets/images/users/user-profile.png" alt="User Profile">
+								<div class="pl-1">
+									<h6 class="mb-0.5 text-sm">
+										<a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">
+											Hossam Chokri
+										</a>
+									</h6>
+									<p class="text-slate-500 text-xs dark:text-zink-200">
+										<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+									</p>
+								</div>
+							</div>
+							<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+								<img
+										class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+										src="assets/images/users/user-profile.png" alt="User Profile">
+								<div class="pl-1">
+									<h6 class="mb-0.5 text-sm">
+										<a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">
+											Hossam Chokri
+										</a>
+									</h6>
+									<p class="text-slate-500 text-xs dark:text-zink-200">
+										<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+									</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="xl:col-span-5">
+						<label class="inline-block mb-2 text-base font-medium">Etudiant</label>
+						<div class="relative grow ">
+							<div
+									class="z-10 w-full border rounded-lgshadow divide-y max-h-32 overflow-y-auto bg-white  "
+									style="border-radius: 0.375rem !important;">
+								<div class="flex w-full p-2.5  dark:border-zink-500 justify-between">
+									<div class="flex items-center flex-grow gap-3">  <!-- Flex-grow
+								makes this column take more space -->
+										<img
+												class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+												src="assets/images/users/user-profile.png" alt="User Profile">
+										<div class="pl-1">
+											<h6 class="mb-0.5 text-sm">
+												<a routerLink="/product-overview"
+														class="transition-all duration-300 ease-linear text-slate-700">
+													Hossam Chokri
+												</a>
+											</h6>
+<!--											<p class="text-slate-500 text-xs dark:text-zink-200">-->
+<!--												<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>-->
+<!--											</p>-->
+										</div>
+									</div>
+									<div class="flex items-center gap-2">
+										<a href="javascript:void(0);"
+												class="transition text-slate-400 hover:text-slate-600 ml-auto">
+											<lucide-angular name="chevron-down"
+													[class]="'size-4 ltr:ml-1 rtl:mr-1'"></lucide-angular>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div
+									class="hidden absolute mt-1 z-10 w-full border rounded-lg shadow divide-y max-h-32 overflow-y-auto bg-white"
+									style="border-radius: 0.375rem !important;">
+								<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+									<img
+											class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+											src="assets/images/users/user-profile.png" alt="User Profile">
+									<div class="pl-1">
+										<h6 class="mb-0.5 text-sm">
+											<a routerLink="/product-overview"
+													class="transition-all duration-300 ease-linear hover:text-custom-500">
+												Hossam Chokri
+											</a>
+										</h6>
+										<p class="text-slate-500 text-xs dark:text-zink-200">
+											<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+										</p>
+									</div>
+								</div>
+								<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+									<img
+											class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+											src="assets/images/users/user-profile.png" alt="User Profile">
+									<div class="pl-1">
+										<h6 class="mb-0.5 text-sm">
+											<a routerLink="/product-overview"
+													class="transition-all duration-300 ease-linear hover:text-custom-500">
+												Hossam Chokri
+											</a>
+										</h6>
+										<p class="text-slate-500 text-xs dark:text-zink-200">
+											<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+										</p>
+									</div>
+								</div>
+								<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+									<img
+											class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+											src="assets/images/users/user-profile.png" alt="User Profile">
+									<div class="pl-1">
+										<h6 class="mb-0.5 text-sm">
+											<a routerLink="/product-overview"
+													class="transition-all duration-300 ease-linear hover:text-custom-500">
+												Hossam Chokri
+											</a>
+										</h6>
+										<p class="text-slate-500 text-xs dark:text-zink-200">
+											<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-span-12">
+						<label for="textArea21" class="inline-block mb-2 text-base font-medium">Description</label>
+						<textarea
+								class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+								id="textArea21"
+								formControlName="description"
+								rows="4"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="p-5 border-t dark:border-zink-500">
+			<div class="flex justify-end gap-2">
+				<button dismissModal [ModalDismiss]="'confirmProjectModal'" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+				<button mndropdownToggle type="button"
+						[appModalTrigger]="'AddJuryModal'"
+						(click)="projectApproved()"
+						class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Send Question</button>
+			</div>
+		</div>
+	</div>
+</ng-modals><!--end ask modal-->
+<ng-modals *ngIf="!selectedDate" id="AddJuryModal" [placement]="'modal-center'"
+		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Invite the Jury</h5>
+			<button dismissModal [ModalDismiss]="'AddJuryModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+			<p class="text-slate-600 pb-5 text-sm dark:text-zink-200">
+				Invite your team to review collaborate on this project
+			</p>
+			<div class="relative mb-3.5">
+				<div class="relative grow">
+					<input type="text" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Search for ..." autocomplete="off">
+					<lucide-angular name="search" [class]="'inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600'"></lucide-angular>
+				</div>
+				<div
+						class="absolute z-10 w-full border rounded-lg shadow divide-y max-h-32 overflow-y-auto bg-white mt-1 hidden"
+						style="border-radius: 0.375rem !important;">
+					<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+						<img
+								class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+								src="assets/images/users/user-profile.png" alt="User Profile">
+						<div class="pl-1">
+							<h6 class="mb-0.5 text-sm">
+								<a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">
+									Hossam Chokri
+								</a>
+							</h6>
+							<p class="text-slate-500 text-xs dark:text-zink-200">
+								<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+						<img
+								class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+								src="assets/images/users/user-profile.png" alt="User Profile">
+						<div class="pl-1">
+							<h6 class="mb-0.5 text-sm">
+								<a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">
+									Hossam Chokri
+								</a>
+							</h6>
+							<p class="text-slate-500 text-xs dark:text-zink-200">
+								<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+						<img
+								class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+								src="assets/images/users/user-profile.png" alt="User Profile">
+						<div class="pl-1">
+							<h6 class="mb-0.5 text-sm">
+								<a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">
+									Hossam Chokri
+								</a>
+							</h6>
+							<p class="text-slate-500 text-xs dark:text-zink-200">
+								<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="shareUrlInput" class="inline-block text-sm font-medium">Invited Users</label>
+				<form [formGroup]="confirmForm" action="javascript:void(0);" class="mt-3">
+					<div class="relative">
+						<div *ngFor="let student of listStudent" @itemAnim>
+							<div class="flex w-full mb-2.5 dark:border-zink-500 justify-between" @itemAnim>
+								<!-- First Column: User Info -->
+								<div class="flex items-center flex-grow gap-3"> <!-- Flex-grow makes this column take more space -->
+									<img
+											class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+											[src]="profileImg(student.profileImg)" alt="">
+
+									<div class="grow pl-1">
+										<h6 class="mb-0.5 text-sm"><a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">{{student.fullName}}
+										</a></h6>
+										<p class="text-slate-600 text-xs dark:text-zink-200">
+											<a [href]="'mailto:' + student.email">{{ student.email }}</a>
+
+										</p>
+									</div>
+								</div>
+
+								<!-- Second Column: Role Tag and Selects -->
+								<div class="flex items-center gap-2">  <!-- Positioned at the far right -->
+									<!-- Additional Select -->
+									<div mndropdown [placement]="'bottom-start'" class="">
+										<button (click)="showMenu(student)" mndropdownToggle
+												data-bs-toggle="dropdown"
+												class="min-w-[101px] flex items-center justify-between px-2.5 py-1 text-xs font-medium rounded-md border bg-white border-slate-200 text-slate-600">
+											{{student.role}}
+											<a href="javascript:void(0);" class="transition text-slate-600 ml-auto">
+												<lucide-angular name="chevron-down" [class]="'size-3 ltr:ml-1 rtl:mr-1'"></lucide-angular>
+											</a>
+										</button>
+
+										<ul *ngIf="!student.hidden" mndropdownMenu
+												class="fixed w-[101px] z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu  dark:bg-zink-600" aria-labelledby="orderAction1">
+
+											<li  *ngFor="let item of specification" >
+												<a      [appModalTrigger]="'selectModal'"
+														(click)="selectMembersRole(student, item.name)"
+														class="block px-4 py-1.5 text-xs transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+													<span class="align-middle">{{ item.name }}</span></a>
+											</li>
+
+										</ul>
+									</div>
+									<button mndropdownToggle type="button"
+											[appModalTrigger]="'ModifierJuryModal'"
+											class="ml-auto flex items-center justify-center size-[25px] dropdown-toggle p-0 text-red-500 btn bg-red-100 hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100">
+										<lucide-angular name="trash-2" class="size-3"></lucide-angular>
+									</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+		<div class="p-5 border-t dark:border-zink-500">
+			<div class="flex justify-end gap-2">
+				<button dismissModal [ModalDismiss]="'AddJuryModal'"
+						class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+				<button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Send Question</button>
+			</div>
+		</div>
+	</div>
+</ng-modals><!--end share modal-->
+<ng-modals id="ModifierJuryModal" [placement]="'modal-center'"
+		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">
+		<div class="flex items-center justify-between p-5 border-b dark:border-zink-500">
+			<h5 class="text-16">Modifier the Jury</h5>
+			<button dismissModal [ModalDismiss]="'ModifierJuryModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+			<p class="text-slate-600 pb-5 text-sm dark:text-zink-200">
+				Invite your team to review collaborate on this project
+			</p>
+			<div class="relative mb-3.5">
+				<div class="relative grow">
+					<input type="text" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Search for ..." autocomplete="off">
+					<lucide-angular name="search" [class]="'inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600'"></lucide-angular>
+				</div>
+				<div
+						class="absolute z-10 w-full border rounded-lg shadow divide-y max-h-32 overflow-y-auto bg-white mt-1 hidden"
+						style="border-radius: 0.375rem !important;">
+					<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+						<img
+								class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+								src="assets/images/users/user-profile.png" alt="User Profile">
+						<div class="pl-1">
+							<h6 class="mb-0.5 text-sm">
+								<a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">
+									Hossam Chokri
+								</a>
+							</h6>
+							<p class="text-slate-500 text-xs dark:text-zink-200">
+								<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+						<img
+								class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+								src="assets/images/users/user-profile.png" alt="User Profile">
+						<div class="pl-1">
+							<h6 class="mb-0.5 text-sm">
+								<a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">
+									Hossam Chokri
+								</a>
+							</h6>
+							<p class="text-slate-500 text-xs dark:text-zink-200">
+								<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center flex-grow gap-3 p-2 hover:bg-slate-100 "> <!-- Flex-grow makes this column take more space -->
+						<img
+								class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+								src="assets/images/users/user-profile.png" alt="User Profile">
+						<div class="pl-1">
+							<h6 class="mb-0.5 text-sm">
+								<a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">
+									Hossam Chokri
+								</a>
+							</h6>
+							<p class="text-slate-500 text-xs dark:text-zink-200">
+								<a [href]="'mailto:' + 'hossam@chokri.com'">hossam&#64;uae.ac.ma</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="shareUrlInput" class="inline-block text-sm font-medium">Invited Users</label>
+				<form [formGroup]="confirmForm" action="javascript:void(0);" class="mt-3">
+					<div class="relative">
+						<div *ngFor="let student of listStudent" @itemAnim>
+							<div class="flex w-full mb-2.5 dark:border-zink-500 justify-between" @itemAnim>
+								<!-- First Column: User Info -->
+								<div class="flex items-center flex-grow gap-3"> <!-- Flex-grow makes this column take more space -->
+									<img
+											class="h-8 rounded-full ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500"
+											[src]="profileImg(student.profileImg)" alt="">
+
+									<div class="grow pl-1">
+										<h6 class="mb-0.5 text-sm"><a routerLink="/product-overview"
+												class="transition-all duration-300 ease-linear hover:text-custom-500">{{student.fullName}}
+										</a></h6>
+										<p class="text-slate-600 text-xs dark:text-zink-200">
+											<a [href]="'mailto:' + student.email">{{ student.email }}</a>
+
+										</p>
+									</div>
+								</div>
+
+								<!-- Second Column: Role Tag and Selects -->
+								<div class="flex items-center gap-2">  <!-- Positioned at the far right -->
+									<!-- Additional Select -->
+									<div mndropdown [placement]="'bottom-start'" class="">
+										<button (click)="showMenu(student)" mndropdownToggle
+												data-bs-toggle="dropdown"
+												class="min-w-[101px] flex items-center justify-between px-2.5 py-1 text-xs font-medium rounded-md border bg-white border-slate-200 text-slate-600">
+											{{student.role}}
+											<a href="javascript:void(0);" class="transition text-slate-600 ml-auto">
+												<lucide-angular name="chevron-down" [class]="'size-3 ltr:ml-1 rtl:mr-1'"></lucide-angular>
+											</a>
+										</button>
+
+										<ul *ngIf="!student.hidden" mndropdownMenu
+												class="fixed w-[101px] z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu  dark:bg-zink-600" aria-labelledby="orderAction1">
+
+											<li  *ngFor="let item of specification" >
+												<a      [appModalTrigger]="'selectModal'"
+														(click)="selectMembersRole(student, item.name)"
+														class="block px-4 py-1.5 text-xs transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+													<span class="align-middle">{{ item.name }}</span></a>
+											</li>
+
+										</ul>
+									</div>
+									<button mndropdownToggle type="button"
+											[appModalTrigger]="'ModifierJuryModal'"
+											class="ml-auto flex items-center justify-center size-[25px] dropdown-toggle p-0 text-red-500 btn bg-red-100 hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100">
+										<lucide-angular name="trash-2" class="size-3"></lucide-angular>
+									</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+		<div class="p-5 border-t dark:border-zink-500">
+			<div class="flex justify-end gap-2">
+				<button dismissModal [ModalDismiss]="'ModifierJuryModal'"
+						class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+				<button type="submit"
+						class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Submit</button>
+			</div>
+		</div>
+	</div>
+</ng-modals><!--end share modal-->
+
+

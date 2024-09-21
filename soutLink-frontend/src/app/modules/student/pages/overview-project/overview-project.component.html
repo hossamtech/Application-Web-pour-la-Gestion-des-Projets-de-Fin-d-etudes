@@ -1,0 +1,559 @@
+<div class="grid grid-cols-12 mt-5 gap-x-5">
+	<div class="col-span-12 lg:col-span-5 xl:col-span-3 shrink-0 lg:block ">
+		<div class="sticky top-0">
+			<app-menu></app-menu>
+		</div>
+	</div><!--end-->
+
+	<div class="mr-2 col-span-12 lg:col-span-7 xl:col-span-9 2xl:col-span-9">
+
+		<div class="card">
+			<div class="card-body">
+				<div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+					<div class="xl:col-span-9">
+						<div class="flex items-center gap-2 pb-4">
+							<div  class="relative dropdown">
+								<button
+										class="size-6 mt-1 border border-dashed rounded-full dropdown-toggle shrink-0  category-dropdown" [ngClass]="{
+                            'bg-orange-100 border-orange-500 dark:bg-orange-500/20': projectResponse.status === ProjectStatus.NOT_TAKEN,
+                            'bg-blue-100 border-blue-500 dark:bg-blue-500/20': projectResponse.status === ProjectStatus.IN_PROGRESS,
+                            'bg-green-100 border-green-500 dark:bg-green-500/20': projectResponse.status === ProjectStatus.ACCEPTED,
+                          }" id="notesActio5n" data-bs-toggle="dropdown" type="button" aria-expanded="false"></button>
+							</div>
+							<h5 class="text-2xl pl-0.5 pt-custom-3 text-slate-700">{{projectResponse.title}}</h5>
+						</div>
+
+						<div class="flex justify-between pl-9">
+							<div class="flex justify-start space-x-14">
+								<div class="flex flex-col items-start gap-1">
+									<p class="text-slate-500 font-medium text-sm">Assigned To</p>
+
+									<div  class="flex -space-x-2">
+										<ng-container *ngFor="let p of participants; let i = index">
+											<img data-tooltip="default" [tooltip]="p.fullName" [options]="myOptions"
+												class="cursor-pointer size-8 border-2 border-white rounded-full dark:border-zink-700" [src]="profileImg(p.profileImage)" alt="">
+
+										</ng-container>
+										<ng-container *ngIf="nbrStudents > 0">
+										<div *ngFor="let _ of [].constructor(nbrStudents); let i = index">
+											<div data-tooltip="default" tooltip="Hossam Chokri" [options]="myOptions"
+													class="cursor-pointer flex text-xs items-center justify-center size-8 border-2 border-white rounded-full"
+													[ngClass]="getAvatarClass(i)">
+												?
+											</div>
+										</div>
+										</ng-container>
+									</div>
+
+								</div>
+								<div class="flex flex-col items-start gap-2">
+									<p class="text-slate-500 font-medium text-sm">Number of students</p>
+									<span
+											class="px-2.5 py-0.5 text-11 inline-block font-medium rounded border bg-custom-100 border-custom-200 text-custom-500 dark:bg-custom-500/20 dark:border-custom-500/20">{{ getNumberStudents(projectResponse) }}</span>
+								</div>
+
+
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+					<div class="xl:col-start-13 xl:col-span-10">
+						<div class="flex gap-3">
+							<div class="shrink-0">
+								<button (click)="ProjectRequest()"  [appModalTrigger]="'extraLargeModal'"   type="button"
+										class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+<!--									<lucide-angular name="plus" class="inline-block size-4"></lucide-angular>-->
+									<span class="font-medium text-15 align-middle">Apply
+										Now</span>
+								</button>
+							</div>
+							<div class="shrink-0">
+								<button
+										class="flex items-center justify-center size-[39px] dropdown-toggle p-0 text-blue-700 btn bg-blue-50 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" data-bs-toggle="dropdown">
+									<lucide-angular name="bookmark" class="size-4"></lucide-angular>
+								</button>
+							</div>
+							<div class="shrink-0">
+								<button
+										class="flex items-center justify-center size-[39px] dropdown-toggle p-0 text-blue-700 btn bg-blue-50 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" data-bs-toggle="dropdown">
+									<lucide-angular name="share-2" class="size-4"></lucide-angular>
+								</button>
+							</div>
+
+						</div>
+						<div *ngIf="serialTrack" class="flex flex-col items-end gap-2" style="padding-top: 37px">
+<!--							<p class="text-slate-500 font-medium text-sm">Owner of the request</p>-->
+							<div
+									class="flex items-center justify-center px-3 py-1 text-xs font-medium rounded-full border bg-sky-100 border-transparent text-sky-500 dark:bg-sky-500/20 dark:border-transparent"
+							>
+								<lucide-angular name="user-round-check" class="size-3"></lucide-angular>
+								<p class="pl-1">{{owner.fullName}}</p>
+							</div>
+
+						</div>
+
+					</div><!--end col-->
+
+				</div>
+			</div>
+		</div><!--end card-->
+
+		<div class="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
+
+			<div class="xl:col-span-8">
+<!--				<div class="card">-->
+<!--					<div class="pb-4 pt-4 pl-2.5 flex items-center border-b border-slate-200">-->
+<!--						<lucide-angular name="minus"-->
+<!--								class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>-->
+<!--						<h6 class="text-15">Project Description</h6>-->
+<!--					</div>-->
+<!--					<div class="card-body pl-6-important pb-6-important">-->
+<!--							<div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-12">-->
+<!--								<div class="xl:col-span-12">-->
+<!--									<div class="pr-10">-->
+<!--										<p class="text-slate-600 text-15" [innerHTML]="projectResponse.description | cleanHtml"></p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>&lt;!&ndash;end grid&ndash;&gt;-->
+<!--					</div>-->
+<!--				</div>&lt;!&ndash;end card&ndash;&gt;-->
+				<div class="relative col-span-12 overflow-hidden card 2xl:col-span-8 bg-slate-900">
+					<div class="absolute inset-0">
+						<svg xmlns="http://www.w3.org/2000/svg" class="size-100" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
+							<g mask="url(&quot;#SvgjsMask1000&quot;)" fill="none">
+								<use xlink:href="#SvgjsSymbol1007" x="0" y="0"></use>
+								<use xlink:href="#SvgjsSymbol1007" x="720" y="0"></use>
+							</g>
+							<defs>
+								<mask id="SvgjsMask1000">
+									<rect width="1440" height="560" fill="#ffffff"></rect>
+								</mask>
+								<path d="M-1 0 a1 1 0 1 0 2 0 a1 1 0 1 0 -2 0z" id="SvgjsPath1003"></path>
+								<path d="M-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0z" id="SvgjsPath1004"></path>
+								<path d="M-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0z" id="SvgjsPath1001"></path>
+								<path d="M2 -2 L-2 2z" id="SvgjsPath1005"></path>
+								<path d="M6 -6 L-6 6z" id="SvgjsPath1002"></path>
+								<path d="M30 -30 L-30 30z" id="SvgjsPath1006"></path>
+							</defs>
+							<symbol id="SvgjsSymbol1007">
+								<use xlink:href="#SvgjsPath1001" x="30" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="30" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="30" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="30" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="30" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="30" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="30" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="30" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="30" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="30" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="90" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="90" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="90" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="90" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1004" x="90" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="90" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="90" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="90" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="90" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="90" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="150" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="150" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="150" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="150" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="150" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="150" y="330" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1004" x="150" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="150" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="150" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="150" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="210" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="210" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="210" y="150" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1002" x="210" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="210" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="210" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="210" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="210" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="210" y="510" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1003" x="210" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="270" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="270" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="270" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="270" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="270" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="270" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="270" y="390" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1002" x="270" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="270" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="270" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="330" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="330" y="90" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1002" x="330" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="330" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="330" y="270" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1001" x="330" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="330" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="330" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="330" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="330" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1004" x="390" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="390" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="390" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="390" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="390" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="390" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="390" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="390" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="390" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="390" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="450" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1004" x="450" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="450" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="450" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="450" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="450" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="450" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="450" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="450" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="450" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="510" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="510" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="510" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="510" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="510" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1004" x="510" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="510" y="390" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1001" x="510" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="510" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="510" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="570" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="570" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="570" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="570" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="570" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="570" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="570" y="390" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1005" x="570" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="570" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="570" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="630" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="630" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="630" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="630" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="630" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="630" y="330" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1002" x="630" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="630" y="450" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1001" x="630" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="630" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="690" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="690" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="690" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1002" x="690" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1005" x="690" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1001" x="690" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="690" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1003" x="690" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+								<use xlink:href="#SvgjsPath1006" x="690" y="510" stroke="rgba(32, 43, 61, 1)" stroke-width="3"></use>
+								<use xlink:href="#SvgjsPath1003" x="690" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+							</symbol>
+						</svg>
+					</div>
+					<div class="relative card-body">
+						<div class="grid items-center grid-cols-12">
+							<div class="col-span-12 lg:col-span-8 2xl:col-span-7">
+								<h5 class="mb-3 font-medium text-lg tracking-wide text-slate-200">👋 Take the project with your
+									friends</h5>
+							</div>
+							<div
+									class="hidden col-span-4 lg:col-span-2 lg:col-start-11 2xl:col-start-13 lg:block">
+								<button type="button"
+										class="text-white font-medium text-15 btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-500/20 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-500/20 dark:ring-custom-400/20">Take a Product</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="pb-4 pt-4 pl-2.5 flex items-center border-b border-slate-200">
+						<lucide-angular name="minus"
+								class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+						<h6 class="text-15">Project Description</h6>
+					</div>
+					<div class="card-body pl-6-important pb-6-important">
+						<div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-12">
+							<div class="xl:col-span-12">
+								<div class="pr-10">
+									<p class="text-slate-600 text-15" [innerHTML]="projectResponse.description | cleanHtml"></p>
+								</div>
+							</div>
+						</div><!--end grid-->
+					</div>
+
+				</div><!--end card-->
+<!--				<div class="card">-->
+<!--					<div class="pb-4 pt-4 pl-2.5 flex items-center border-b border-slate-200">-->
+<!--						<lucide-angular name="minus"-->
+<!--								class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>-->
+<!--						<h6 class="text-15">Project Discussions</h6>-->
+<!--					</div>-->
+<!--					<div class="card-body pl-6-important pr-6-important">-->
+<!--						<div>-->
+<!--							<div class="relative before:absolute ltr:before:border-l-2 ltr:before:left-4 rtl:before:right-3.5 before:top-1.5 before:-bottom-1.5 pb-4 dark:before:border-zink-500">-->
+<!--								<div class="relative flex justify-between items-start gap-2">-->
+<!--									<div class="flex gap-2 flex-1">-->
+<!--										<div class="flex text-xs items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-custom-100 text-custom-500 dark:border-zink-700 dark:bg-custom-950">?</div>-->
+<!--										<div>-->
+<!--											<h6 class="mb-1">Reda Mansouri</h6>-->
+<!--											<p class="mb-2 text-slate-500 dark:text-zink-200">Offer is valid on orders of $230 Or above for selected products only.</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<p class="text-12 text-slate-500 dark:text-zink-200 flex-shrink-0">12 Dec, 2023</p>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--							<div class="relative before:absolute ltr:before:border-l-2 ltr:before:left-4 rtl:before:right-3.5 before:top-1.5 before:-bottom-1.5 pb-4 dark:before:border-zink-500">-->
+<!--								<div class="relative flex justify-between items-start gap-2">-->
+<!--									<div class="flex gap-2 flex-1">-->
+<!--										<div class="flex text-xs items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-custom-100 text-custom-500 dark:border-zink-700 dark:bg-custom-950">?</div>-->
+<!--										<div>-->
+<!--											<h6 class="mb-1">Reda Mansouri</h6>-->
+<!--											<p class="mb-2 text-slate-500 dark:text-zink-200">Offer is sssssssssssssssssvalid on orders of $230 Or above for selected products only.</p>-->
+<!--											<div class="pt-1 mb-2">-->
+<!--												&lt;!&ndash; Use inline-flex to ensure the container size fits the content &ndash;&gt;-->
+<!--												<div class="inline-flex border rounded border-slate-200 dark:border-zink-500">-->
+<!--													<div class="flex items-center p-2">-->
+<!--														<div class="shrink-0 mr-3">-->
+<!--															<div class="p-2 rounded-md w-9 h-9 bg-slate-100 dark:bg-zink-600">-->
+<!--																<img data-dz-thumbnail class="block w-full h-full rounded-md" src="assets/images/files/pdf-94.svg" alt="Dropzone-Image">-->
+<!--															</div>-->
+<!--														</div>-->
+<!--														<div class="flex-grow">-->
+<!--															<div class="pt-1 pr-5">-->
+<!--																<h5 class="mb-1 text-sm whitespace-nowrap" data-dz-name>document.pdf</h5>-->
+<!--																<p class="mb-0 text-11 text-slate-500 dark:text-zink-200" data-dz-size>45 MB</p>-->
+<!--																<strong class="error text-danger" data-dz-errormessage></strong>-->
+<!--															</div>-->
+<!--														</div>-->
+<!--														<div class="shrink-0 ml-3">-->
+<!--															<button data-bs-toggle="dropdown" class="flex items-center justify-center w-[27px] h-[27px] p-0 text-slate-500 bg-slate-100 rounded-full hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">-->
+<!--																<lucide-angular name="download" class="size-3"></lucide-angular>-->
+<!--															</button>-->
+<!--														</div>-->
+<!--													</div>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</div>-->
+<!--									<p class="text-12 text-slate-500 dark:text-zink-200 flex-shrink-0">12 Dec, 2023</p>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--							<div class="relative before:absolute ltr:before:border-l-2 ltr:before:left-4 rtl:before:right-3.5 before:top-1.5 before:-bottom-1.5 pb-4 dark:before:border-zink-500">-->
+<!--								<div class="relative flex justify-between items-start gap-2">-->
+<!--									<div class="flex gap-2 flex-1">-->
+<!--										<div class="flex text-xs items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-custom-100 text-custom-500 dark:border-zink-700 dark:bg-custom-950">?</div>-->
+<!--										<div>-->
+<!--											<h6 class="mb-1">Reda Mansouri</h6>-->
+<!--											<p class="mb-2 text-slate-500 dark:text-zink-200">Offer is valid on orders of $230 Or above for selected products only.</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<p class="text-12 text-slate-500 dark:text-zink-200 flex-shrink-0">12 Dec, 2023</p>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--							<div class="relative">-->
+<!--								<div class="relative flex justify-between items-start gap-2">-->
+<!--									<div class="flex gap-2 flex-1">-->
+<!--										<div class="flex text-xs items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-custom-100 text-custom-500 dark:border-zink-700 dark:bg-custom-950">?</div>-->
+<!--										<div>-->
+<!--											<h6 class="mb-1">Mehdi Machouri</h6>-->
+<!--											<p class="mb-2 text-slate-500 dark:text-zink-200">User <a href="javascript:void(0);" class="text-custom-500">Erica245</a> submitted a ticket</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<p class="text-12 text-slate-500 dark:text-zink-200 flex-shrink-0">26 Dec, 2023</p>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+
+
+
+<!--					</div>-->
+<!--				</div>&lt;!&ndash;end card&ndash;&gt;-->
+		</div><!--end col-->
+			<div class="xl:col-span-4">
+				<div class="card">
+					<div class="pb-4 pt-4 pl-2 flex items-center border-b border-slate-200">
+						<lucide-angular name="minus"
+								class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+						<h6 class="text-15">Project Team</h6>
+					</div>
+					<div class="card-body pt-0-important pb-0-important">
+
+						<div class="relative">
+
+							<div>
+								<table class="w-full">
+									<tbody>
+									<tr class="align-middle">
+										<td class="px-3.5 py-4 pb-5 first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500">
+											<div class="flex items-center gap-3">
+												<div>
+													<img [src]="profileImg(supervisor.profileImg)" alt=""
+															class="h-9 rounded-md ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500">
+
+												</div>
+
+												<div class="grow pl-1">
+													<h6 class="mb-0.5 text-base"><a routerLink="/product-overview"
+															class="transition-all duration-300 ease-linear hover:text-custom-500">{{supervisor.fullName}}
+													</a></h6>
+													<p class="text-slate-500 text-12 dark:text-zink-200">
+														<a href="mailto:">{{ supervisor.email }}</a>
+													</p>
+												</div>
+
+											</div>
+											<span
+													class="mt-5 px-2.5 py-0.5 text-11 inline-block font-medium rounded border bg-custom-100 border-custom-200 text-custom-500 dark:bg-custom-500/20 dark:border-custom-500/20">{{supervisor.department}}</span>
+
+										</td>
+										<td
+												class="flex h-81 justify-end items-center px-3.5 py-4  first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500 ltr:text-right rtl:text-left">
+											<div mndropdown [placement]="'bottom-end'" class="relative">
+												<button mndropdownToggle id="orderAction1" data-bs-toggle="dropdown"
+														class="flex items-center justify-center size-[27px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+													<lucide-angular name="grip-horizontal" class="size-3"></lucide-angular></button>
+												<ul mndropdownMenu
+														class="absolute z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[7rem] dark:bg-zink-600" aria-labelledby="orderAction1">
+
+													<li >
+														<a [appModalTrigger]="'addOrderModal'"
+																class="block px-4 py-1.5 text-xs transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+															<lucide-angular name="file-pen-line" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></lucide-angular>
+															<span class="align-middle">Overview</span></a>
+													</li>
+													<li >
+														<a [appModalTrigger]="'deleteModal'"
+																class="block px-4 py-1.5 text-xs transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+															<lucide-angular name="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></lucide-angular>
+															<span class="align-middle">Delete</span></a>
+													</li>
+												</ul>
+
+											</div>
+										</td>
+									</tr>
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+				<div class="card">
+					<div class="pb-4 pt-4 pl-2 flex items-center border-b border-slate-200">
+						<lucide-angular name="minus"
+								class="rotate-45 h-4 group-data-[sidebar-size=sm]:h-5 group-data-[sidebar-size=sm]:w-5 transition group-hover/menu-link:animate-icons fill-slate-100 group-hover/menu-link:fill-blue-200 group-data-[sidebar=dark]:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:dark:fill-zink-600 group-data-[layout=horizontal]:dark:fill-zink-600 group-data-[sidebar=brand]:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:fill-vertical-menu-item-bg-active-modern group-data-[sidebar=dark]:group-hover/menu-link:fill-vertical-menu-item-bg-active-dark group-data-[sidebar=dark]:group-hover/menu-link:dark:fill-custom-500/20 group-data-[layout=horizontal]:dark:group-hover/menu-link:fill-custom-500/20 group-data-[sidebar=brand]:group-hover/menu-link:fill-vertical-menu-item-bg-active-brand group-data-[sidebar=modern]:group-hover/menu-link:fill-vertical-menu-item-bg-active-modern group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mx-auto group-data-[sidebar-size=md]:mb-2"></lucide-angular>
+						<h6 class="text-15">Project Documents</h6>
+					</div>
+					<div class="card-body pt-0-important">
+
+						<div class="relative">
+
+							<div *ngFor="let file of projectResponse.files">
+								<table class="w-full">
+									<tbody>
+									<tr class="align-middle">
+										<td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500">
+											<div class="flex items-center gap-3">
+												<div class="p-2 rounded-md size-11 bg-slate-100 dark:bg-zink-600">
+													<img data-dz-thumbnail class="block w-full h-full rounded-md" [src]="getFilePreview(file)"
+															alt="Dropzone-Image">
+												</div>
+												<div class="grow pl-1">
+													<h6 class="mb-0.5 text-15"><a routerLink="/product-overview"
+															class="transition-all duration-300 ease-linear hover:text-custom-500">
+														{{ file.fileName | truncateFileName:20 }}
+													</a></h6>
+													<p class="text-slate-500 text-12 dark:text-zink-200">
+														{{file.size | fileSize }}
+													</p>
+												</div>
+											</div>
+										</td>
+										<td
+												class="flex h-81 justify-end items-center px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500 ltr:text-right rtl:text-left">
+											<div mndropdown [placement]="'bottom-end'" class="relative">
+												<button mndropdownToggle id="orderAction2" data-bs-toggle="dropdown"
+														class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+													<lucide-angular name="download" class="size-3"></lucide-angular></button>
+
+
+											</div>
+										</td>
+									</tr>
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div><!--end grid-->
+	</div><!--end-->
+</div><!--end-->
+
+
+
+<ng-modals  *ngIf="isModalVisible"  id="extraLargeModal" [placement]="'modal-center'"
+		className="fixed flex flex-col  transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">
+	<div class="w-screen lg:w-[40rem] bg-white shadow rounded-md flex flex-col h-full">
+		<div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+			<h5 class="text-16">Project Request</h5>
+			<button dismissModal [ModalDismiss]="'extraLargeModal'" class="transition-all duration-200 ease-linear text-slate-500 hover:text-red-500 dark:text-zink-200 dark:hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>
+		</div>
+		<div class="mb-3 mt-5 max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+<!--			<img alt="image" class="mb-6 m-auto dark:hidden max-h-[145px]" src="assets/images/30.svg">-->
+
+			<div class="flex pb-4 justify-center max-w-md mx-auto items-center overflow-y-auto gap-2">
+				<div
+						class="px-4 py-3 text-sm text-green-500 border border-green-200 rounded-md bg-green-50 dark:bg-green-400/20 dark:border-green-500/50">
+					<lucide-angular name="check-check" [class]="'inline-block size-4 text-green-500 fill-green-100 dark:fill-green-500/20'"></lucide-angular>
+					<span class="pl-2"></span>You have successfully requested to join the project
+				</div>
+			</div>
+			<p
+					class="text-slate-700 max-w-md overflow-y-auto mx-auto flex text-center font-medium text-15 dark:text-zink-200">
+				Copy this link to invite your friends to request the same project and form a team!
+
+			</p>
+
+<!--			<h6 class="mb-4 text-15">Basic Clipboard Copy</h6>-->
+			<div *ngIf="!serialTrack" class="flex pt-4" >
+				<input type="text" id="clipboard" [(ngModel)]="link" value="Welcome to Tailwick😊"
+						aria-describedby="button-addon2"
+						class="text-slate-500 ltr:rounded-r-none rtl:rounded-l-none form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="">
+				<button ngxClipboard [cbContent]="link" (cbOnSuccess)="callServiceToCopy1()" (cbOnError)="onCopyFailure()"
+						type="button" id="copyButton" data-clipboard-action="copy" data-clipboard-target="#clipboard" class="flex items-center justify-center w-[39px] h-[39px] ltr:rounded-l-none rtl:rounded-r-none p-0 text-slate-500 btn bg-slate-200 border-slate-200 hover:text-slate-600 hover:bg-slate-300 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-300 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-300 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-600 dark:hover:bg-zink-500 dark:border-zink-600 dark:hover:border-zink-500 dark:text-zink-200 dark:ring-zink-400/50">
+					<lucide-angular name="clipboard-list" [class]="'inine-lblock size-4'"></lucide-angular>
+				</button>
+			</div>
+		</div>
+		<div class="flex items-center justify-end p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+			<button type="button" class="text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20">Soft Button</button>
+
+		</div>
+
+	</div>
+</ng-modals>

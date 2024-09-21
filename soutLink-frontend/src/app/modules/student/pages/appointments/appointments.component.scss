@@ -1,0 +1,9 @@
+/* Force rounded corners */
+button.rounded-full {
+  border-radius: 9999px !important;
+}
+
+/* Optional: Adjust spacing between items */
+//button {
+//  margin-right: 8px; /* Matches gap-2 in Tailwind */
+//}

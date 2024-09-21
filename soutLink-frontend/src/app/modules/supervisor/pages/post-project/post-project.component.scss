@@ -1,0 +1,29 @@
+/* Custom styles for SweetAlert2 HTML content */
+.swal2-container .swal2-title {
+  padding-top: 0.5rem !important;
+}
+
+div:where(.swal2-container) .swal2-html-container {
+
+  font-size: 16px !important;
+  --tw-text-opacity: 1 !important;
+  color: rgb(100 116 139 / var(--tw-text-opacity)) !important;
+  font-weight: 500 !important;
+
+}
+
+div:where(.swal2-container) img:where(.swal2-image) {
+  max-width: 40% !important;
+  margin: 2rem auto auto !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+  padding-bottom: 2rem !important;
+}
+
+.inactive-button {
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  pointer-events: none; /* Prevents clicks and other interactions */
+}

@@ -1,0 +1,304 @@
+<app-page-title [title]="'Projects'" [pagetitle]="'Apps'"></app-page-title>
+
+<div class="card">
+	<div class="card-body">
+		<div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
+			<div class="xl:col-span-4">
+				<ul class="flex w-full gap-2 text-sm font-medium text-center filter-btns grow" data-filter-target="notes-list">
+					<li>
+						<a href="javascript:void(0);" (click)="categoryFilter(AppointmentStatus.WAITING)" [ngClass]="{'active':
+						selectedCategory === AppointmentStatus.WAITING}"
+								class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear active rounded-md text-slate-500 dark:text-zink-200 border border-transparent [&.active]:bg-custom-500 dar:[&.active]:bg-custom-500 [&.active]:text-white dark:[&.active]:text-white hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">UPCOMING</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" (click)="categoryFilter(AppointmentStatus.ACCEPTED)"
+								[ngClass]="{'active':
+						selectedCategory === AppointmentStatus.ACCEPTED}"
+								class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-md text-slate-500 dark:text-zink-200 border border-transparent [&.active]:bg-custom-500 dar:[&.active]:bg-custom-500 [&.active]:text-white dark:[&.active]:text-white hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">ACCEPTED</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" (click)="categoryFilter(AppointmentStatus.CANCELED)" [ngClass]="{'active':
+						selectedCategory === AppointmentStatus.CANCELED}"
+								class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear rounded-md text-slate-500 dark:text-zink-200 border border-transparent [&.active]:bg-custom-500 dar:[&.active]:bg-custom-500 [&.active]:text-white dark:[&.active]:text-white hover:text-custom-500 dark:hover:text-custom-500 active:text-custom-500 dark:active:text-custom-500 -mb-[1px]">CANCELED</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="xl:col-start-10 xl:col-span-3">
+				<div class="flex gap-3">
+					<div class="relative grow">
+						<input type="text" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Search for ..." autocomplete="off">
+						<lucide-angular name="search" [class]="'inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600'"></lucide-angular>
+					</div>
+
+				</div>
+			</div><!--end col-->
+
+		</div>
+	</div>
+</div><!--end card-->
+
+<div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-4 gap-y-4 auto-rows-auto" id="notes-list">
+	@for(request of requestList ;track $index){
+		<div class="card product-item undefined">
+			<div class="pb-3 pl-5 pt-5 pr-5 border-b border-slate-200 flex items-center justify-between">
+				<h5 class="text-15 text-slate-700  flex-grow">{{request.objet}}</h5>
+				<div class="relative dropdown">
+					<button (click)="requestDetails(request.id)"  [DrawerTrigger]="'cartSidePenal'" data-bs-toggle="dropdown"
+							class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100">
+						<lucide-angular name="layout-list" class="size-3"></lucide-angular>
+					</button>
+				</div>
+			</div>
+
+
+			<div class="flex flex-col card-body">
+				<div class="flex justify-between">
+					<div class="pb-4">
+						<div class="flex items-center gap-3">
+							<div>
+								<img [src]="profileImg(request.student.profileImage)" alt=""
+										class="h-9 rounded-md ring-1 ring-offset-2 ring-slate-200 dark:ring-offset-zink-700 dark:ring-zink-500">
+
+							</div>
+
+							<div class="grow pl-1">
+								<h6 class="mb-0.5 text-base"><a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">{{request.student.fullName}}
+								</a></h6>
+								<p class="text-slate-500 text-12 dark:text-zink-200">
+									<a href="mailto:">{{request.student.email}}</a>
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="pb-4">
+					<div class="js-read-smore" data-read-smore-words="40" data-read-smore-inline="true" style="display: inline;">
+						<p class="text-slate-800 pb-2 font-medium dark:text-zink-200">Description :</p>
+						<p class="text-slate-500" style="display: inline;" [innerHTML]="showFullDescription ?
+						request.description :
+							request.description.slice(0, 73)">
+						</p>
+					</div>
+					@if(request.description.length > 73){
+						<span class="read-smore__link-wrap" style="display: inline;">
+							<a class="read-smore__link text-12 block pt-1" style="cursor:pointer" aria-expanded="false"
+									tabindex="0"
+									(click)="toggleDescription()">
+								{{ showFullDescription ? 'Read Less' : 'Read More' }}
+							</a>
+            			</span>
+					}
+				</div>
+
+
+				<div class="flex items-center justify-between gap-3 pt-1 mt-auto">
+					<p class="text-slate-500 text-base dark:text-zink-200 grow"><lucide-angular
+							name="calendar-days"	class="inline-block size-4 ltr:mr-1 rtl::ml-1"></lucide-angular> <span
+							class="align-middle">{{request.createdDate}}</span></p>
+					<span
+							class="px-2.5 py-0.5 text-12 font-medium rounded border border-transparent  dark:border-transparent inline-flex items-center status"
+							[ngClass]="{'bg-green-100 text-green-500 dark:bg-green-500/20': request.status == AppointmentStatus.ACCEPTED,
+                                    'bg-slate-100 text-slate-500 dark:bg-slate-500/20': request.status == AppointmentStatus.WAITING,
+                                    'bg-red-100 text-red-500 dark:bg-red-500/20': request.status == AppointmentStatus.CANCELED}">
+						@if(request.status == AppointmentStatus.ACCEPTED){<lucide-angular name="circle-check-big"
+								[class]="'size-3 mr-1.5'"></lucide-angular> }
+						@if(request.status == AppointmentStatus.CANCELED){<lucide-angular name="x"
+								[class]="'size-3 mr-1.5'"></lucide-angular> }
+						@if(request.status == AppointmentStatus.WAITING){<lucide-angular name="loader"
+								[class]="'size-3 mr-1.5'"></lucide-angular> }
+						{{getStatusLabel(request.status)}}</span>
+				</div>
+			</div>
+		</div>
+	}
+</div><!--end grid-->
+
+<div class="flex flex-col items-center gap-5 mb-5 md:flex-row" id="paginationItems">
+	<div class="grow">
+		<p class="text-slate-500 dark:text-zink-200">Showing <b>{{getEndIndex()}}</b> of <b>{{totalItems}}</b>
+			Results</p>
+	</div>
+	<ul class="flex flex-wrap items-center gap-2">
+		<app-pagination-controls [currentPage]="currentPage + 1" previousLabel="Prev" nextLabel="Next"
+				[itemsPerPage]="itemsPerPage"
+				[totalPages]="totalPages"
+				[total]="totalItems" (pageChanged)="onPageChange($event)">
+		</app-pagination-controls>
+	</ul>
+</div>
+
+<drawer *ngIf="requestId" id="cartSidePenal" [position]="'drawer-end'">
+	<div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+		<div class="flex items-center justify-between gap-3 pt-1 mt-auto max-w-[272px]">
+			<h5 class="mb-0 text-16 max-w-[240px] break-words">{{studentAppointment.objet}}</h5>
+		</div>
+		<div class="shrink-0">
+      <span
+			  class="px-2.5 py-0.5 text-12 font-medium rounded border border-transparent dark:border-transparent inline-flex items-center status"
+			  [ngClass]="{'bg-green-100 text-green-500 dark:bg-green-500/20': studentAppointment.status == AppointmentStatus.ACCEPTED,
+                    'bg-slate-100 text-slate-500 dark:bg-slate-500/20': studentAppointment.status == AppointmentStatus.WAITING,
+                    'bg-red-100 text-red-500 dark:bg-red-500/20': studentAppointment.status == AppointmentStatus.CANCELED}">
+        @if(studentAppointment.status == AppointmentStatus.ACCEPTED){<lucide-angular name="circle-check-big"
+				[class]="'size-3 mr-1.5'"></lucide-angular> }
+		  @if(studentAppointment.status == AppointmentStatus.CANCELED){<lucide-angular name="x"
+				  [class]="'size-3 mr-1.5'"></lucide-angular> }
+		  @if(studentAppointment.status == AppointmentStatus.WAITING){<lucide-angular name="loader"
+				  [class]="'size-3 mr-1.5'"></lucide-angular> }
+		  {{getStatusLabel(studentAppointment.status)}}</span>
+		</div>
+	</div>
+
+	<!-- Scrollable content -->
+	<div>
+		<ngx-simplebar>
+			<ngx-simplebar class="flex flex-col h-[calc(100vh_-_365)] overflow-y-auto">
+				<div class="border-b border-slate-200 dark:border-zink-500">
+					<div *ngIf="studentAppointment.status != AppointmentStatus.WAITING" >
+
+						<div class="p-4 flex flex-col gap-4 "><!-- Added 'w-full' -->
+							<div class="border rounded-md border-slate-200 w-full"> <!-- Added 'w-full' -->
+								<div class="flex flex-wrap items-center gap-3 p-2 w-full"> <!-- Added 'w-full' -->
+									<div class="flex flex-col items-center justify-center size-12 border rounded-sm border-slate-200 dark:border-zink-500 shrink-0">
+										<h6>{{getDatePart(studentAppointment.appointmentDate, 'month')}}</h6>
+										<span
+												class="text-sm text-slate-500 dark:text-zink-200">
+								{{getDatePart(studentAppointment.appointmentDate, 'day')}}
+							</span>
+									</div>
+									<div class="grow">
+										<h6 class="mb-1"><a href="javascript:void(0);">La date d'appointement</a></h6>
+										<p class="mb-0 mt-1.5 text-slate-500 self-start space-x-2">
+                        <span class="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-white border-slate-400 text-slate-500 dark:bg-zink-700 dark:border-zink-400 dark:text-zink-200  align-middle">
+                            {{ getDayName(studentAppointment.appointmentDate) }}
+                        </span>
+											<span>
+                            <lucide-angular name="calendar-clock" [class]="'inline-block size-4 ltr:mr-1 rtl:ml-1'"></lucide-angular>
+                            <span class="align-middle">{{ getAmPmFromTime(studentAppointment.appointmentTime) }}</span>
+                        </span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex flex-col p-4 border-t border-slate-200  gap-3">
+						<div>
+							<p class="text-slate-700 pb-2 font-medium dark:text-zink-200">Project Title :</p>
+							<h5 class="text-16 cursor-pointer pl-0.5 transition-all duration-200 ease-linear hover:text-custom-500 ">
+								{{appointmentRequestDetails.projectTitle}}
+							</h5>
+						</div>
+						<div>
+							<p class="text-slate-700 pb-2 font-medium dark:text-zink-200">Project Group :</p>
+							<div class="flex -space-x-3">
+								<ng-container *ngFor="let student of projectGroup">
+									<img data-tooltip="default" [tooltip]="student.fullName" [options]="myOptions"
+											class="cursor-pointer size-9 border-2 border-white rounded-full dark:border-zink-700"
+											[src]="profileImg(student.profileImage)" alt="">
+								</ng-container>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex p-4 pb-0 flex-col gap-3">
+					<div>
+						<div class="js-read-smore" data-read-smore-words="40" data-read-smore-inline="true" style="display: inline;">
+							<p class="text-slate-700 pb-2 font-medium dark:text-zink-200">Description :</p>
+							<p class="text-slate-500" style="display: inline;" [innerHTML]="showFullDescription ?
+								studentAppointment.description :
+								studentAppointment.description.slice(0, 300)">
+							</p>
+						</div>
+						@if(studentAppointment.description.length > 300){
+							<span class="read-smore__link-wrap text-sm" style="display: inline;">
+								<a class="read-smore__link" style="cursor:pointer" aria-expanded="false" tabindex="0"
+										(click)="toggleDescription()">
+								  {{ showFullDescription ? 'Read Less' : 'Read More' }}
+								</a>
+          					</span>
+						}
+					</div>
+					<div class="flex items-center">
+						<p class="text-slate-700 pr-2 font-medium dark:text-zink-200">Date :</p>
+						<p class="text-slate-500 text-base dark:text-zink-200 grow">
+							<span class="align-middle">{{studentAppointment.createdDate}}</span></p>
+					</div>
+				</div>
+			</ngx-simplebar>
+		</ngx-simplebar>
+	</div>
+
+
+	<!-- Fixed footer content -->
+	<div    *ngIf="studentAppointment.status == AppointmentStatus.WAITING"
+			class="p-4 pb-6 border-t border-slate-200 dark:border-zink-500 fixed bottom-0 left-0 right-0 bg-white dark:bg-zink-800">
+		<form [formGroup]="appointmentsForm">
+			<div class="flex pb-8 flex-col gap-3">
+				<div class="xl:col-span-6">
+					<label for="productDateInput" class="inline-block mb-2 text-base font-medium">Select a date</label>
+					<input id="productDateInput" type="text" mwlFlatpickr
+							[flatpickrOptions]="{'altInput':true,'dateFormat':'d M, Y'}"
+							formControlName="date"
+							class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+							data-provider="flatpickr" data-date-format="d M, Y"
+							[attr.data-default-date]="appointmentsForm.get('date')?.value" readonly="readonly"
+							placeholder="Select Date">
+				</div>
+
+				<div class="xl:col-span-6">
+					<label for="productTimeInput" class="inline-block mb-2 text-base font-medium">Select a time</label>
+					<input id="productTimeInput" type="text" mwlFlatpickr
+							[flatpickrOptions]="{'noCalendar':true,'dateFormat':'H:i','time_24hr':false,'enableTime':true,'inline':true}"
+							formControlName="time"
+							class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+							data-provider="timepickr" data-time-inline="11:42">
+				</div>
+			</div>
+
+		</form>
+
+		<div class="flex items-center justify-between gap-3">
+			<button *ngIf="!isLoaded"
+					(click)="saveAppointment()" [appModalTrigger]="'appointmentModal'" dismissDrawer
+					[DrawerDismiss]="'cartSidePenal'"
+					class="w-full text-white bg-custom-500 border-custom-500 btn hover:text-white hover:bg-custom-600
+        hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600
+        focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600
+        active:ring active:ring-custom-100 ">
+				<span class="align-middle pr-1">Apply </span>
+			</button>
+			<button *ngIf="isLoaded" (click)="saveAppointment()" type="button"
+					class="w-full flex items-center justify-center text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+				<svg class=" size-4 mr-2 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+					<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+				</svg>
+				<span class="align-middle pr-1">Apply </span>
+			</button>
+
+		</div>
+	</div>
+</drawer>
+
+<!--<ng-modals id="appointmentModal" [placement]="'modal-center'"-->
+<!--		className="fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4">-->
+<!--	<div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600">-->
+<!--		<div class="h-full px-6 py-8">-->
+<!--			<div class="float-right">-->
+<!--				<button dismissModal [ModalDismiss]="'appointmentModal'" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><lucide-angular name="x" [class]="'size-5'"></lucide-angular></button>-->
+<!--			</div>-->
+<!--			<img src="assets/images/delete.png" alt="" class="block h-12 mx-auto">-->
+<!--			<div class="mt-5 text-center">-->
+<!--				<h5 class="mb-1">Appointment Sent Successfully</h5>-->
+<!--				<p class="text-slate-500">Your appointment has been successfully sent to the student. They will receive a notification shortly.</p>-->
+<!--			</div>-->
+
+<!--		</div>-->
+<!--	</div>-->
+<!--</ng-modals>&lt;!&ndash;end delete modal&ndash;&gt;-->

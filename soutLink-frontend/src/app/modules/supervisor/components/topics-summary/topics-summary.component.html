@@ -1,0 +1,44 @@
+
+		<div>
+			<table class="w-full">
+				<tbody>
+				<tr class="align-middle">
+					<td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500">
+						<div class="flex items-center gap-3">
+							<div class="flex items-center justify-center size-12 rounded-md bg-slate-100 shrink-0">
+
+							</div>
+							<div class="grow">
+								<h6 class="mb-1 text-15"><a routerLink="/product-overview"
+										class="transition-all duration-300 ease-linear hover:text-custom-500">{{topic.title
+									| truncateFileName:30 }}</a></h6>
+								<p class="text-slate-500 dark:text-zink-200">{{numberStudentsLabel}}</p>
+							</div>
+						</div>
+					</td>
+					<td
+							class="flex h-81 justify-end items-center px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-400 dark:border-zink-500 ltr:text-right rtl:text-left">
+						<div mndropdown [placement]="'bottom-end'" class="relative">
+							<button mndropdownToggle id="orderAction1" data-bs-toggle="dropdown" class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+								<lucide-angular name="grip-horizontal" class="size-3"></lucide-angular></button>
+							<ul mndropdownMenu class="absolute z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="orderAction1">
+
+								<li (click)="onEdit()">
+									<a [appModalTrigger]="'addOrderModal'" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+										<lucide-angular name="file-pen-line" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></lucide-angular>
+										<span class="align-middle">Edit</span></a>
+								</li>
+								<li (click)="ondelete()">
+									<a [appModalTrigger]="'deleteModal'" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="javascript:void(0);">
+										<lucide-angular name="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></lucide-angular>
+										<span class="align-middle">Delete</span></a>
+								</li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+
+				</tbody>
+			</table>
+		</div>
+
