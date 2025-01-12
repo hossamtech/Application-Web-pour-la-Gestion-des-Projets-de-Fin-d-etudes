@@ -43,32 +43,39 @@ Ce projet vise à développer une **application web** permettant de gérer les P
 | ![Inscription Étudiant](/screenschot_app/register-etudiant.jpg) | ![Inscription Encadrant](/screenschot_app/register-encadrant.jpg) |
 
 
-### **Page d’Accueil Étudiant**
-<img src="/screenschot_app/home-etudiant.jpg" alt="Accueil Étudiant" width="400"/>
+<table>
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Description</th>
+      <th>Aperçu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Page d’Accueil Étudiant</b></td>
+      <td>Cette page offre une vue d’ensemble des projets disponibles et permet de naviguer facilement.</td>
+      <td>
+        <img src="screenschot_app/home-etudiant.jpg" alt="Accueil Étudiant" width="300">
+      </td>
+    </tr>
+    <tr>
+      <td><b>Demandes de Projets</b></td>
+      <td>Les étudiants peuvent soumettre des demandes pour des projets et suivre leur statut en temps réel.</td>
+      <td>
+        <img src="screenschot_app/project-request.jpg" alt="Demandes de Projets" width="300">
+      </td>
+    </tr>
+    <tr>
+      <td><b>Planification de Rendez-vous</b></td>
+      <td>Cette page permet de prendre des rendez-vous avec les encadrants et de gérer leur calendrier.</td>
+      <td>
+        <img src="screenschot_app/appointments-students.jpg" alt="Planification de Rendez-vous" width="300">
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-### **Création de Projet**
-<img src="/screenschot_app/create-projects.jpg" alt="Création de Projet" width="400"/>
-
-### **Liste des Projets**
-<img src="/screenschot_app/list-projects.jpg" alt="Liste des Projets" width="400"/>
-
-### **Vue d’Ensemble d’un Projet**
-<img src="/screenschot_app/overview-project.jpg" alt="Vue d’Ensemble" width="400"/>
-
-### **Demandes de Projets**
-<img src="/screenschot_app/project-request.jpg" alt="Demandes de Projets" width="400"/>
-
-### **Demandes en Attente**
-<img src="/screenschot_app/requests.jpg" alt="Demandes en Attente" width="400"/>
-
-### **Planification de Rendez-vous**
-- **Étudiants** :  
-  <img src="/screenschot_app/appointments-students.jpg" alt="Planification Étudiant" width="400"/>  
-- **Encadrants** :  
-  <img src="/screenschot_app/appointments-encadrant.jpg" alt="Planification Encadrant" width="400"/>
-
-### **Invitations pour le Jury**
-<img src="/screenschot_app/invite-jury.jpg" alt="Invitations Jury" width="400"/>
 
 ---
 
