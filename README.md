@@ -1,4 +1,6 @@
-Voici une version mise à jour du fichier `README.md` intégrant les nouvelles captures d'écran :
+To make the images medium-sized in your `README.md`, you can control the display size using HTML tags since Markdown syntax doesn't natively support resizing images.
+
+Here's the updated `README.md` with medium-sized images:
 
 ---
 
@@ -32,45 +34,83 @@ Ce projet vise à développer une **application web** permettant de gérer les P
 ## Captures d’Écran
 
 ### **Page de Connexion**
-![Page de Connexion](/screenschot_app/login.jpg)
+<img src="/screenschot_app/login.jpg" alt="Page de Connexion" width="400"/>
 
 ### **Inscription**
 - **Étudiants** :  
-  ![Inscription Étudiant](/screenschot_app/register-etudiant.jpg)  
+  <img src="/screenschot_app/register-etudiant.jpg" alt="Inscription Étudiant" width="400"/>  
 - **Encadrants** :  
-  ![Inscription Encadrant](/screenschot_app/register-encadrant.jpg)
+  <img src="/screenschot_app/register-encadrant.jpg" alt="Inscription Encadrant" width="400"/>
 
 ### **Page d’Accueil Étudiant**
-![Accueil Étudiant](/screenschot_app/home-etudiant.jpg)
+<img src="/screenschot_app/home-etudiant.jpg" alt="Accueil Étudiant" width="400"/>
 
 ### **Création de Projet**
-![Création de Projet](/screenschot_app/create-projects.jpg)
+<img src="/screenschot_app/create-projects.jpg" alt="Création de Projet" width="400"/>
 
 ### **Liste des Projets**
-![Liste des Projets](/screenschot_app/list-projects.jpg)
+<img src="/screenschot_app/list-projects.jpg" alt="Liste des Projets" width="400"/>
 
 ### **Vue d’Ensemble d’un Projet**
-![Vue d’Ensemble](/screenschot_app/overview-project.jpg)
+<img src="/screenschot_app/overview-project.jpg" alt="Vue d’Ensemble" width="400"/>
 
 ### **Demandes de Projets**
-![Demandes de Projets](/screenschot_app/project-request.jpg)
+<img src="/screenschot_app/project-request.jpg" alt="Demandes de Projets" width="400"/>
 
 ### **Demandes en Attente**
-![Demandes en Attente](/screenschot_app/requests.jpg)
+<img src="/screenschot_app/requests.jpg" alt="Demandes en Attente" width="400"/>
 
 ### **Planification de Rendez-vous**
 - **Étudiants** :  
-  ![Planification Étudiant](/screenschot_app/appointments-students.jpg)  
+  <img src="/screenschot_app/appointments-students.jpg" alt="Planification Étudiant" width="400"/>  
 - **Encadrants** :  
-  ![Planification Encadrant](/screenschot_app/appointments-encadrant.jpg)
+  <img src="/screenschot_app/appointments-encadrant.jpg" alt="Planification Encadrant" width="400"/>
 
 ### **Invitations pour le Jury**
-![Invitations Jury](/screenschot_app/invite-jury.jpg)
+<img src="/screenschot_app/invite-jury.jpg" alt="Invitations Jury" width="400"/>
 
 ---
 
 ## Technologies Utilisées
 
 - **Backend** : Spring Boot
-- **Frontend** : Angular 
-- **Base de Données** : MySQL
+- **Frontend** : React, Angular ou Vue.js
+- **Base de Données** : MySQL ou MongoDB
+
+---
+
+## Installation
+
+1. Clonez le projet :
+   ```bash
+   git clone https://github.com/votre-utilisateur/votre-projet.git
+   cd votre-projet
+   ```
+
+2. Configurez votre base de données :
+   - Créez une base de données et configurez les accès dans le fichier `application.properties`.
+
+3. Installez les dépendances et démarrez les serveurs :
+   ```bash
+   cd backend
+   mvn spring-boot:run
+   ```
+
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+4. Accédez à l'application sur `http://localhost:3000`.
+
+---
+
+## Contributeurs
+
+- [Votre Nom](https://github.com/votre-utilisateur)
+- [Collaborateur 1](https://github.com/collaborateur1)
+
+---
+
+Dans cet exemple, les images sont définies avec une largeur de 400 pixels grâce à `width="400"`. Vous pouvez ajuster la taille en modifiant cette valeur selon vos besoins. 😊
