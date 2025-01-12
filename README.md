@@ -42,6 +42,7 @@ Ce projet vise à développer une **application web** permettant de gérer les P
 |------------------------------------|--------------------------------------|
 | ![Inscription Étudiant](/screenschot_app/register-etudiant.jpg) | ![Inscription Encadrant](/screenschot_app/register-encadrant.jpg) |
 
+### **la plateforme etudiant**
 
 <table>
   <thead>
@@ -76,6 +77,54 @@ Ce projet vise à développer une **application web** permettant de gérer les P
   </tbody>
 </table>
 
+### **la plateforme encadrant**
+
+<table>
+  <thead>
+    <tr>
+      <th>Page</th>
+      <th>Description</th>
+      <th>Aperçu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Page d’Accueil Encadrant</b></td>
+      <td>Vue d’ensemble des projets en cours et des groupes d’étudiants associés.</td>
+      <td>
+        <img src="screenschot_app/home-encadrant.jpg" alt="Accueil Encadrant" width="300">
+      </td>
+    </tr>
+    <tr>
+      <td><b>Création de Projets</b></td>
+      <td>Permet aux encadrants de créer des projets avec des descriptions détaillées et de définir les critères requis.</td>
+      <td>
+        <img src="screenschot_app/create-projects.jpg" alt="Création de Projets" width="300">
+      </td>
+    </tr>
+    <tr>
+      <td><b>Gestion des Demandes</b></td>
+      <td>Les encadrants peuvent consulter et accepter ou rejeter les demandes des groupes d’étudiants.</td>
+      <td>
+        <img src="screenschot_app/requests.jpg" alt="Gestion des Demandes" width="300">
+      </td>
+    </tr>
+    <tr>
+      <td><b>Planification de Rendez-vous</b></td>
+      <td>Interface pour gérer les rendez-vous avec les étudiants et organiser des sessions de suivi.</td>
+      <td>
+        <img src="screenschot_app/appointments-encadrant.jpg" alt="Planification de Rendez-vous" width="300">
+      </td>
+    </tr>
+    <tr>
+      <td><b>Invitation au Jury</b></td>
+      <td>Outil pour inviter des membres de jury pour les soutenances des projets.</td>
+      <td>
+        <img src="screenschot_app/invite-jury.jpg" alt="Invitation au Jury" width="300">
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
