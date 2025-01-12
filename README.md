@@ -37,10 +37,11 @@ Ce projet vise à développer une **application web** permettant de gérer les P
 <img src="/screenschot_app/login.jpg" alt="Page de Connexion" width="400"/>
 
 ### **Inscription**
-- **Étudiants** :  
-  <img src="/screenschot_app/register-etudiant.jpg" alt="Inscription Étudiant" width="400"/>  
-- **Encadrants** :  
-  <img src="/screenschot_app/register-encadrant.jpg" alt="Inscription Encadrant" width="400"/>
+
+| Étudiants                          | Encadrants                           |
+|------------------------------------|--------------------------------------|
+| ![Inscription Étudiant](/screenschot_app/register-etudiant.jpg) | ![Inscription Encadrant](/screenschot_app/register-encadrant.jpg) |
+
 
 ### **Page d’Accueil Étudiant**
 <img src="/screenschot_app/home-etudiant.jpg" alt="Accueil Étudiant" width="400"/>
