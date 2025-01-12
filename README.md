@@ -1,9 +1,3 @@
-To make the images medium-sized in your `README.md`, you can control the display size using HTML tags since Markdown syntax doesn't natively support resizing images.
-
-Here's the updated `README.md` with medium-sized images:
-
----
-
 # Gestion des Projets de Fin d’Études (PFE)
 
 ## Description du Projet
@@ -124,43 +118,5 @@ Ce projet vise à développer une **application web** permettant de gérer les P
 ## Technologies Utilisées
 
 - **Backend** : Spring Boot
-- **Frontend** : React, Angular ou Vue.js
-- **Base de Données** : MySQL ou MongoDB
-
----
-
-## Installation
-
-1. Clonez le projet :
-   ```bash
-   git clone https://github.com/votre-utilisateur/votre-projet.git
-   cd votre-projet
-   ```
-
-2. Configurez votre base de données :
-   - Créez une base de données et configurez les accès dans le fichier `application.properties`.
-
-3. Installez les dépendances et démarrez les serveurs :
-   ```bash
-   cd backend
-   mvn spring-boot:run
-   ```
-
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
-
-4. Accédez à l'application sur `http://localhost:3000`.
-
----
-
-## Contributeurs
-
-- [Votre Nom](https://github.com/votre-utilisateur)
-- [Collaborateur 1](https://github.com/collaborateur1)
-
----
-
-Dans cet exemple, les images sont définies avec une largeur de 400 pixels grâce à `width="400"`. Vous pouvez ajuster la taille en modifiant cette valeur selon vos besoins. 😊
+- **Frontend** : Angular 
+- **Base de Données** : MySQL
