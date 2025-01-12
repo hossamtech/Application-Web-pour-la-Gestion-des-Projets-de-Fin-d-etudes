@@ -1,58 +1,76 @@
+Voici une version mise à jour du fichier `README.md` intégrant les nouvelles captures d'écran :
+
+---
+
 # Gestion des Projets de Fin d’Études (PFE)
 
 ## Description du Projet
 
-Ce projet vise à développer une **application web** permettant de gérer les Projets de Fin d’Études (PFE). Il offre un ensemble d'outils pour faciliter la gestion des documents, la communication entre encadrants et étudiants, et la planification des soutenances.
-
-L’application propose des fonctionnalités robustes et conviviales pour optimiser l’organisation et le suivi des PFE au sein des établissements universitaires.
+Ce projet vise à développer une **application web** permettant de gérer les Projets de Fin d’Études (PFE). Elle offre un ensemble d'outils pour simplifier la gestion des documents, la communication entre encadrants et étudiants, ainsi que la planification des soutenances.
 
 ---
 
 ## Fonctionnalités
 
-- **Gestion des utilisateurs** :
-  - Inscription des encadrants via des emails institutionnels.
-  - Inscription des étudiants avec validation des informations académiques.
-  - Séparation automatique des espaces utilisateurs (encadrant/étudiant).
+- **Gestion des Utilisateurs** :
+  - Inscription des étudiants et des encadrants via une interface conviviale.
+  - Authentification sécurisée.
+  - Gestion des profils et des accès.
 
-- **Gestion des PFE** :
-  - Création de sujets par les encadrants avec description détaillée.
-  - Affichage des sujets disponibles pour les étudiants.
-  - Gestion des groupes d’étudiants et suivi des postulations.
+- **Gestion des Projets** :
+  - Création et suivi des sujets de PFE par les encadrants.
+  - Affichage des projets disponibles pour les étudiants.
+  - Suivi des demandes et validations.
 
-- **Partage et collaboration** :
-  - Espace sécurisé pour partager des fichiers via Google Drive.
-  - Notifications automatiques pour les mises à jour.
-
-- **Soutenance** :
-  - Planification des soutenances avec invitation des jurys.
-  - Gestion des notes et des remarques des jurys.
+- **Planification des Soutenances** :
+  - Prise de rendez-vous entre étudiants et encadrants.
+  - Invitations pour les jurys.
+  - Gestion des soutenances (notes, remarques, etc.).
 
 ---
 
 ## Captures d’Écran
 
-### Interface Étudiant
-- **Thème clair** :
-  ![Interface Étudiant Clair](Screenshot_App/matrixLight.png)
+### **Page de Connexion**
+![Page de Connexion](/screenschot_app/login.jpg)
 
-- **Thème sombre** :
-  ![Interface Étudiant Sombre](Screenshot_App/matrixDark.png)
+### **Inscription**
+- **Étudiants** :  
+  ![Inscription Étudiant](/screenschot_app/register-etudiant.jpg)  
+- **Encadrants** :  
+  ![Inscription Encadrant](/screenschot_app/register-encadrant.jpg)
 
-### Interface Encadrant
-- **Thème clair** :
-  ![Interface Encadrant Clair](Screenshot_App/ImageFiltred_light.png)
+### **Page d’Accueil Étudiant**
+![Accueil Étudiant](/screenschot_app/home-etudiant.jpg)
 
-- **Thème sombre** :
-  ![Interface Encadrant Sombre](Screenshot_App/ImageFiltred_dark.png)
+### **Création de Projet**
+![Création de Projet](/screenschot_app/create-projects.jpg)
+
+### **Liste des Projets**
+![Liste des Projets](/screenschot_app/list-projects.jpg)
+
+### **Vue d’Ensemble d’un Projet**
+![Vue d’Ensemble](/screenschot_app/overview-project.jpg)
+
+### **Demandes de Projets**
+![Demandes de Projets](/screenschot_app/project-request.jpg)
+
+### **Demandes en Attente**
+![Demandes en Attente](/screenschot_app/requests.jpg)
+
+### **Planification de Rendez-vous**
+- **Étudiants** :  
+  ![Planification Étudiant](/screenschot_app/appointments-students.jpg)  
+- **Encadrants** :  
+  ![Planification Encadrant](/screenschot_app/appointments-encadrant.jpg)
+
+### **Invitations pour le Jury**
+![Invitations Jury](/screenschot_app/invite-jury.jpg)
 
 ---
 
 ## Technologies Utilisées
 
 - **Backend** : Spring Boot
-- **Frontend** : Angular
+- **Frontend** : Angular 
 - **Base de Données** : MySQL
-- **Hébergement** : GitHub
-
----
