@@ -89,13 +89,6 @@ Ce projet vise à développer une **application web** permettant de gérer les P
   </thead>
   <tbody>
     <tr>
-      <td><b>Page d’Accueil Encadrant</b></td>
-      <td>Vue d’ensemble des projets en cours et des groupes d’étudiants associés.</td>
-      <td>
-        <img src="screenschot_app/home-encadrant.jpg" alt="Accueil Encadrant" width="300">
-      </td>
-    </tr>
-    <tr>
       <td><b>Création de Projets</b></td>
       <td>Permet aux encadrants de créer des projets avec des descriptions détaillées et de définir les critères requis.</td>
       <td>
